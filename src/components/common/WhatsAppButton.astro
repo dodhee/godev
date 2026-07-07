@@ -1,0 +1,16 @@
+---
+interface Props {
+  text?: string;
+}
+const { text = 'Konsultasi Sekarang' } = Astro.props;
+---
+
+<a
+  href="https://wa.me/6281234796567?text=Halo%20godev%2C%20saya%20tertarik%20konsultasi%20otomatisasi."
+  target="_blank"
+  rel="noopener noreferrer"
+  class="btn-godev-primary fixed bottom-6 right-6 z-50 shadow-lg animate-bounce"
+>
+  <span class="icon-[tabler--brand-whatsapp] mr-2 h-6 w-6"></span>
+  {text}
+</a>

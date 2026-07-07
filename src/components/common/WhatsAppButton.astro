@@ -1,12 +1,19 @@
 ---
+import { getUTMMessage } from '../../utils/UTMHelper';
+
 interface Props {
   text?: string;
 }
+
 const { text = 'Konsultasi Sekarang' } = Astro.props;
+
+const defaultMsg = 'Halo godev, saya tertarik konsultasi gratis tentang otomatisasi usaha saya.';
+const message = getUTMMessage(Astro.url.toString(), defaultMsg);
+const waLink = `https://wa.me/6281234796567?text=${encodeURIComponent(message)}`;
 ---
 
 <a
-  href="https://wa.me/6281234796567?text=Halo%20godev%2C%20saya%20tertarik%20konsultasi%20otomatisasi."
+  href={waLink}
   target="_blank"
   rel="noopener noreferrer"
   class="btn-godev-primary fixed bottom-6 right-6 z-50 shadow-lg animate-bounce"

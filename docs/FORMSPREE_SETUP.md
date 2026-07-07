@@ -38,6 +38,7 @@ FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxx
 **Ganti `xxxxx` dengan ID form Anda yang sudah di-copy**
 
 Contoh:
+
 ```bash
 FORMSPREE_ENDPOINT=https://formspree.io/f/mwpklvyz
 ```
@@ -48,6 +49,7 @@ FORMSPREE_ENDPOINT=https://formspree.io/f/mwpklvyz
 ### 5. Testing Form
 
 1. Jalankan dev server:
+
 ```bash
 npm run dev
 ```
@@ -66,6 +68,7 @@ npm run dev
 ### 6. Menerima Notifikasi
 
 Setiap kali ada submission baru:
+
 - Email notifikasi otomatis dikirim ke email Anda
 - Data submission juga bisa dilihat di dashboard Formspree
 - Dashboard: https://formspree.io/forms
@@ -123,5 +126,6 @@ Jika submission sudah lebih dari 50/bulan:
 ## Support
 
 Jika ada masalah setup Formspree, hubungi:
+
 - WhatsApp: 6281234796567
 - Email: info@godev.biz.id

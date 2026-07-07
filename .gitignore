@@ -28,4 +28,4 @@ pnpm-lock.yaml
 .vscode/
 
 # Internal documentation
-docs/
+docs/mega_prompt_godev.txt

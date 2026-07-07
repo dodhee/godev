@@ -1,0 +1,163 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Toko Retail: Stok Opname 2 Hari Jadi 2 Jam | Studi Kasus GoDev',
+  description:
+    'Setiap barang keluar, stok langsung berkurang otomatis. Laporan penjualan harian muncul sendiri di HP. Barang menipis, langsung ada notifikasi.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      Toko Retail: <br class="hidden sm:inline" />
+      <span class="text-godev-primary">Stok Opname 2 Hari Jadi 2 Jam.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-normal">
+        Bagaimana sistem inventory otomatis menyelamatkan toko retail dari kerugian akibat barang hilang dan stok
+        selisih.
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Disclaimer -->
+  <div class="px-4 py-6 mx-auto max-w-4xl">
+    <div class="text-sm text-center text-muted bg-gray-50 dark:bg-slate-800 rounded-lg p-4">
+      <p class="font-semibold mb-1">Disclaimer Studi Kasus</p>
+      <p>Ilustrasi berdasarkan masalah umum yang kami tangani. Detail klien disamarkan demi privasi.</p>
+    </div>
+  </div>
+
+  <!-- Sebelum Section -->
+  <Content
+    title="Sebelum: Stok Opname Jadi Mimpi Buruk"
+    items={[
+      {
+        title: 'Stok Opname Butuh Waktu 2 Hari Karena Hitung Manual Satu-Satu',
+        description:
+          'Tutup toko 2 hari penuh. Karyawan lelah hitung barang satu-satu. Setelah selesai, hasilnya sering masih salah.',
+      },
+      {
+        title: 'Sering Ada Barang Hilang Tanpa Ketahuan',
+        description:
+          'Tidak tahu kapan barang hilang. Baru ketahuan saat stok opname. Sudah terlambat untuk investigasi. Kerugian terus berulang.',
+      },
+      {
+        title: 'Laporan Penjualan Baru Bisa Dibuat Akhir Bulan',
+        description:
+          'Data penjualan masih dicatat manual di buku atau Excel terpisah. Tidak tahu barang apa yang laku hari ini. Keputusan restok lambat.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Masalah Utama</h3>
+      <p class="text-muted">
+        Pemilik toko kehilangan omzet karena stok tidak terkontrol. Barang laku tidak segera restok, barang slow-moving
+        menumpuk.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-red-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Sesudah Section -->
+  <Content
+    isReversed
+    isAfterContent
+    title="Sesudah: Kontrol Penuh atas Inventory"
+    items={[
+      {
+        title: 'Setiap Barang Keluar, Stok Langsung Berkurang Otomatis',
+        description:
+          'Kasir scan barcode atau input manual. Stok langsung berkurang di sistem. Real-time, tidak ada delay.',
+      },
+      {
+        title: 'Laporan Penjualan Harian Muncul Sendiri di HP',
+        description:
+          'Setiap pagi jam 8, laporan lengkap masuk via WhatsApp. Barang apa yang paling laku kemarin, berapa omzet, berapa margin.',
+      },
+      {
+        title: 'Barang Menipis, Langsung Ada Notifikasi',
+        description:
+          'Sistem set threshold per produk. Kalau stok di bawah batas minimum, notifikasi langsung ke pemilik. Tidak ada lagi kehabisan stok mendadak.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Solusi yang Diterapkan</h3>
+      <p class="text-muted">
+        Sistem inventory real-time terintegrasi dengan kasir + notifikasi otomatis untuk kontrol stok yang ketat.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-green-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Hasil Section -->
+  <Content
+    title="Hasil: Pemilik Tahu Persis Kondisi Stok"
+    items={[
+      {
+        title: 'Stok Opname Selesai dalam 2 Jam',
+        description:
+          'Tinggal scan barcode, sistem otomatis bandingkan dengan catatan. Selisih langsung ketahuan. Investigasi lebih cepat.',
+      },
+      {
+        title: 'Pemilik Tahu Persis Barang Apa yang Harus Restok Minggu Ini',
+        description:
+          'Laporan mingguan otomatis. Daftar barang yang harus restok berdasarkan tren penjualan. Keputusan lebih akurat.',
+      },
+      {
+        title: 'Tidak Ada Lagi Barang Hilang Tanpa Jejak',
+        description:
+          'Setiap transaksi tercatat. Kalau ada selisih, bisa dilacak kapan dan siapa yang input. Akuntabilitas meningkat.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dampak Nyata</h3>
+      <p class="text-muted">
+        Kerugian akibat barang hilang turun 80%. Omzet naik 25% karena stok selalu tersedia. Pemilik tidur lebih
+        nyenyak.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-godev-primary/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CTA Final -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Mari Kita Rapikan Usaha Anda',
+        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20solusi%20untuk%20RETAIL.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Usaha Anda Mirip dengan Ini? <br class="hidden sm:inline" />
+      <span class="text-godev-accent">Mari Kita Rapikan.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Ceritakan masalah toko retail Anda. Kami beri solusi yang tepat.<br class="hidden md:inline" />
+      Konsultasi pertama gratis, tidak ada paksaan.
+    </Fragment>
+  </CallToAction>
+</Layout>

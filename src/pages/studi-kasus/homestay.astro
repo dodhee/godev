@@ -1,0 +1,161 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Homestay: Tamu Booking Sendiri, Pemilik Pantau dari Mana Saja | Studi Kasus GoDev',
+  description:
+    'Tamu cek ketersediaan kamar sendiri lewat link. Booking otomatis masuk ke kalender. Notifikasi pembayaran langsung muncul di HP pemilik.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      Homestay: <br class="hidden sm:inline" />
+      <span class="text-godev-primary">Tamu Booking Sendiri, Pemilik Pantau dari Mana Saja.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-normal">
+        Bagaimana sistem booking otomatis membebaskan pemilik homestay dari kerepotan balas chat manual setiap hari.
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Disclaimer -->
+  <div class="px-4 py-6 mx-auto max-w-4xl">
+    <div class="text-sm text-center text-muted bg-gray-50 dark:bg-slate-800 rounded-lg p-4">
+      <p class="font-semibold mb-1">Disclaimer Studi Kasus</p>
+      <p>Ilustrasi berdasarkan masalah umum yang kami tangani. Detail klien disamarkan demi privasi.</p>
+    </div>
+  </div>
+
+  <!-- Sebelum Section -->
+  <Content
+    title="Sebelum: Chat WhatsApp Membanjiri Setiap Hari"
+    items={[
+      {
+        title: 'Tamu Sering Tanya "Kamar Kosong Tidak?" via WA',
+        description:
+          'Admin harus balas satu-satu. Kalau lagi sibuk, chat tertunda. Tamu tidak sabar, akhirnya booking di tempat lain.',
+      },
+      {
+        title: 'Admin Balas Manual Satu-Satu',
+        description:
+          'Waktu habis hanya untuk jawab pertanyaan yang sama berulang kali: harga, fasilitas, ketersediaan. Tidak efisien.',
+      },
+      {
+        title: 'Pembayaran Masih Transfer Manual, Sering Lupa Dicatat',
+        description:
+          'Tamu transfer, kasih screenshot, admin catat di buku. Sering lupa dicatat. Akhir bulan bingung rekonsiliasi.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Masalah Utama</h3>
+      <p class="text-muted">
+        Admin kewalahan balas chat. Pemilik tidak bisa liburan karena harus stand-by terus. Pendapatan bocor karena
+        pencatatan manual.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-red-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Sesudah Section -->
+  <Content
+    isReversed
+    isAfterContent
+    title="Sesudah: Sistem Otomatis yang Ramah Tamu"
+    items={[
+      {
+        title: 'Tamu Cek Ketersediaan Kamar Sendiri Lewat Link',
+        description:
+          'Admin tinggal share 1 link. Tamu bisa cek sendiri kamar mana yang kosong, lihat foto, lihat harga. Self-service 24/7.',
+      },
+      {
+        title: 'Booking Otomatis Masuk ke Kalender',
+        description:
+          'Tamu pilih kamar, isi data, bayar. Langsung masuk ke kalender Google. Admin dan pemilik dapat notifikasi otomatis.',
+      },
+      {
+        title: 'Notifikasi Pembayaran Langsung Muncul di HP Pemilik',
+        description:
+          'Setiap ada pembayaran masuk, notifikasi langsung ke WhatsApp pemilik. Tidak ada lagi pembayaran yang terlewat.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Solusi yang Diterapkan</h3>
+      <p class="text-muted">
+        Sistem booking terintegrasi dengan kalender + payment gateway sederhana untuk notifikasi otomatis.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-green-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Hasil Section -->
+  <Content
+    title="Hasil: Pemilik Bisa Liburan Tanpa Khawatir"
+    items={[
+      {
+        title: 'Admin Tidak Perlu Balas Chat Berulang',
+        description:
+          'Pertanyaan umum sudah terjawab otomatis lewat sistem. Admin fokus melayani tamu yang sudah booking.',
+      },
+      {
+        title: 'Tingkat Okupansi Naik Karena Proses Booking Lebih Cepat',
+        description:
+          'Tamu tidak perlu menunggu balasan admin. Bisa langsung booking kapan saja, malam atau pagi. Conversion rate naik.',
+      },
+      {
+        title: 'Pemilik Bisa Liburan Tanpa Khawatir Ada Tamu yang Terlewat',
+        description:
+          'Semua berjalan otomatis. Pemilik tetap dapat notifikasi real-time. Bisa pantau dari mana saja lewat HP.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dampak Nyata</h3>
+      <p class="text-muted">
+        Tingkat okupansi naik dari 60% menjadi 85% dalam 3 bulan. Admin lebih santai, pemilik lebih tenang.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-godev-primary/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CTA Final -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Mari Kita Rapikan Usaha Anda',
+        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20solusi%20untuk%20HOMESTAY.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Usaha Anda Mirip dengan Ini? <br class="hidden sm:inline" />
+      <span class="text-godev-accent">Mari Kita Rapikan.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Ceritakan masalah homestay Anda. Kami beri solusi yang tepat.<br class="hidden md:inline" />
+      Konsultasi pertama gratis, tidak ada paksaan.
+    </Fragment>
+  </CallToAction>
+</Layout>

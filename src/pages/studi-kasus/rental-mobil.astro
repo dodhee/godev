@@ -1,0 +1,160 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Rental Mobil: Dari Pusing Catat Kunci, Jadi Otomatis di WA | Studi Kasus GoDev',
+  description:
+    'Sistem otomatis mengecek ketersediaan mobil. Pelanggan dapat link booking via WA. Laporan keuangan harian otomatis masuk ke HP pemilik.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      Rental Mobil: <br class="hidden sm:inline" />
+      <span class="text-godev-primary">Dari Pusing Catat Kunci, Jadi Otomatis di WA.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-normal">
+        Bagaimana sistem otomatis mengubah rental mobil dari chaos menjadi terkelola rapi, tanpa perlu beli software
+        mahal.
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Disclaimer -->
+  <div class="px-4 py-6 mx-auto max-w-4xl">
+    <div class="text-sm text-center text-muted bg-gray-50 dark:bg-slate-800 rounded-lg p-4">
+      <p class="font-semibold mb-1">Disclaimer Studi Kasus</p>
+      <p>Ilustrasi berdasarkan masalah umum yang kami tangani. Detail klien disamarkan demi privasi.</p>
+    </div>
+  </div>
+
+  <!-- Sebelum Section -->
+  <Content
+    title="Sebelum: Kacau Balau Admin Manual"
+    items={[
+      {
+        title: 'Admin Sering Salah Catat Jadwal Sewa',
+        description:
+          'Pakai buku tulis dan WhatsApp personal. Kalau ada 2 orang pesan mobil yang sama di waktu bersamaan, bentrok. Pelanggan marah, reputasi rusak.',
+      },
+      {
+        title: 'Mobil Sering Bentrok Jadwalnya',
+        description:
+          'Tidak ada kalender terpusat. Admin satu tidak tahu apa yang dicatat admin lain. Mobil yang seharusnya kosong ternyata sudah dipesan.',
+      },
+      {
+        title: 'Pencatatan Uang Sewa Masih di Buku Tulis',
+        description:
+          'Akhir bulan bingung hitung pendapatan. Sering selisih antara catatan dan uang di tangan. Tidak tahu mobil mana yang paling laku.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Masalah Utama</h3>
+      <p class="text-muted">
+        Pemilik rental mobil kehilangan omzet karena sistem manual yang tidak efisien. Admin kewalahan, pelanggan
+        kecewa.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-red-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Sesudah Section -->
+  <Content
+    isReversed
+    isAfterContent
+    title="Sesudah: Sistem Otomatis yang Bekerja 24/7"
+    items={[
+      {
+        title: 'Sistem Otomatis Mengecek Ketersediaan Mobil',
+        description:
+          'Pelanggan cek sendiri lewat link. Mobil yang sudah dipesan langsung tidak muncul di list. Tidak ada lagi bentrok jadwal.',
+      },
+      {
+        title: 'Pelanggan Dapat Link Booking via WA',
+        description:
+          'Admin tinggal share link. Pelanggan isi form, pilih mobil, pilih tanggal, bayar. Semuanya tercatat otomatis.',
+      },
+      {
+        title: 'Laporan Keuangan Harian Otomatis Masuk ke HP Pemilik',
+        description:
+          'Setiap pagi jam 8, laporan lengkap masuk via WhatsApp. Berapa mobil yang disewa hari ini, berapa pendapatan kemarin, mobil mana yang idle.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Solusi yang Diterapkan</h3>
+      <p class="text-muted">Sistem booking otomatis terintegrasi WhatsApp + Google Sheets untuk tracking real-time.</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-green-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Hasil Section -->
+  <Content
+    title="Hasil: Pemilik Bisa Tidur Nyenyak"
+    items={[
+      {
+        title: 'Tidak Ada Lagi Bentrok Jadwal',
+        description: 'Sistem otomatis mencegah double booking. Pelanggan lebih puas, reputasi membaik.',
+      },
+      {
+        title: 'Admin Fokus Melayani Tamu, Bukan Pusing Hitung-Hitungan',
+        description:
+          'Waktu admin yang tadinya habis untuk catat-mencatat, sekarang digunakan untuk memberikan pelayanan terbaik.',
+      },
+      {
+        title: 'Pemilik Tahu Persis Kondisi Bisnis Real-time',
+        description:
+          'Laporan harian otomatis. Bisa pantau dari mana saja. Keputusan bisnis lebih cepat dan akurat berdasarkan data.',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dampak Nyata</h3>
+      <p class="text-muted">
+        Omzet naik 30% dalam 2 bulan pertama. Komplain pelanggan turun drastis. Pemilik bisa liburan tanpa khawatir.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-godev-primary/5 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CTA Final -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Mari Kita Rapikan Usaha Anda',
+        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20solusi%20untuk%20RENTAL.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Usaha Anda Mirip dengan Ini? <br class="hidden sm:inline" />
+      <span class="text-godev-accent">Mari Kita Rapikan.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Ceritakan masalah rental mobil Anda. Kami beri solusi yang tepat.<br class="hidden md:inline" />
+      Konsultasi pertama gratis, tidak ada paksaan.
+    </Fragment>
+  </CallToAction>
+</Layout>
+---

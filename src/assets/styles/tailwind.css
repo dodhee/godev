@@ -8,7 +8,7 @@
 @custom-variant intersect (&:not([no-intersect]));
 
 @theme {
-  /* godev Brand Colors */
+  /* GoDev Brand Colors */
   --color-godev-primary: #556b2f;
   --color-godev-secondary: #2c3e50;
   --color-godev-accent: #25d366;
@@ -20,7 +20,7 @@
   --color-default: var(--aw-color-text-default);
   --color-muted: var(--aw-color-text-muted);
 
-  /* godev Fonts */
+  /* GoDev Fonts */
   --font-sans:
     'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
@@ -41,7 +41,7 @@
   }
 }
 
-/* godev Custom Button Utilities */
+/* GoDev Custom Button Utilities */
 @utility btn-godev-primary {
   @apply inline-flex items-center justify-center rounded-full font-semibold text-center text-base leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-2 focus:ring-offset-2 cursor-pointer;
   background-color: #25d366;

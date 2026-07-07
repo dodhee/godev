@@ -7,7 +7,7 @@ interface Props {
 
 const { text = 'Konsultasi Sekarang' } = Astro.props;
 
-const defaultMsg = 'Halo godev, saya tertarik konsultasi gratis tentang otomatisasi usaha saya.';
+const defaultMsg = 'Halo GoDev, saya tertarik konsultasi gratis tentang otomatisasi usaha saya.';
 const message = getUTMMessage(Astro.url.toString(), defaultMsg);
 const waLink = `https://wa.me/6281234796567?text=${encodeURIComponent(message)}`;
 ---

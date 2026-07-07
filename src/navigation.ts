@@ -35,7 +35,7 @@ export const headerData = {
   actions: [
     {
       text: 'Konsultasi Gratis',
-      href: 'https://wa.me/6281234796567?text=Halo%20godev%2C%20saya%20tertarik%20konsultasi%20gratis%20tentang%20otomatisasi%20usaha%20saya.',
+      href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20konsultasi%20gratis%20tentang%20otomatisasi%20usaha%20saya.',
       target: '_blank',
     },
   ],
@@ -87,8 +87,8 @@ export const footerData = {
   ],
   footNote: `
     <p class="text-sm text-muted">
-      godev © ${new Date().getFullYear()} · Jasa Done-For-You Otomatisasi Google Workspace untuk UMKM<br/>
-      Dibuat dengan ❤️ oleh <a class="text-blue-600 hover:underline dark:text-muted" href="https://github.com/arthelokyo">dody [mbah]</a>
+      GoDev © ${new Date().getFullYear()} · Jasa Done-For-You Otomatisasi Google Workspace untuk UMKM<br/>
+      Dibuat dengan ❤️ untuk UMKM Indonesia oleh dody [mbah]
     </p>
   `,
 };

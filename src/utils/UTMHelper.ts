@@ -5,7 +5,7 @@ export function getUTMMessage(url: string, defaultMessage: string): string {
 
     if (!utmCampaign) return defaultMessage;
 
-    return `Halo godev, saya tertarik dengan solusi ${utmCampaign.toUpperCase()} tapi pusing setup-nya.`;
+    return `Halo GoDev, saya tertarik dengan solusi ${utmCampaign.toUpperCase()} tapi pusing setup-nya.`;
   } catch {
     return defaultMessage;
   }

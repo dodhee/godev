@@ -1,0 +1,149 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Harga & Paket Otomasi Usaha - GoDev',
+  description:
+    'Pilih paket otomasi Google Workspace yang sesuai dengan tahap usaha Anda. Harga pasti, tidak ada biaya tersembunyi. Mulai dari Rp 750.000.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      Investasi untuk <br class="hidden sm:inline" />
+      <span class="text-godev-primary">Ketenangan Pikir Anda.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-normal">
+        Pilih paket yang sesuai dengan tahap usaha Anda.<br />
+        Harga pasti, <span class="font-semibold">tidak ada biaya tersembunyi.</span>
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Pricing Section -->
+  <Pricing
+    title="Paket Otomasi Usaha"
+    subtitle="Semua paket sudah termasuk pelatihan dan garansi"
+    prices={[
+      {
+        title: 'Rapi',
+        subtitle: 'Untuk usaha yang baru mulai teratur',
+        price: '750.000',
+        period: 'sekali bayar',
+        items: [
+          { description: 'Form input data otomatis' },
+          { description: 'Dashboard laporan harian sederhana (Google Sheets)' },
+          { description: 'Pelatihan 1x sesi (1-2 jam)' },
+          { description: 'Garansi perbaikan 2 minggu' },
+        ],
+        callToAction: {
+          text: 'Pilih Paket Rapi',
+          href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20Paket%20Rapi.',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Terima Beres',
+        subtitle: 'Untuk usaha yang ingin sistem profesional',
+        price: '1.500.000',
+        period: 'sekali bayar',
+        hasRibbon: true,
+        ribbonTitle: 'Paling Laris',
+        items: [
+          { description: 'Semua fitur di Paket Rapi' },
+          { description: 'Notifikasi WhatsApp otomatis' },
+          { description: 'Sistem booking/inventory real-time' },
+          { description: 'Integrasi domain email profesional (nama@tokoanda.com)' },
+          { description: 'Maintenance gratis 1 bulan' },
+          { description: 'Pelatihan 2x sesi (total 3-4 jam)' },
+        ],
+        callToAction: {
+          text: 'Pilih Terima Beres',
+          href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20Paket%20Terima%20Beres.',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Tenang',
+        subtitle: 'Maintenance bulanan untuk sistem yang sudah jalan',
+        price: '350.000',
+        period: 'per bulan',
+        items: [
+          { description: 'Perbaikan bug prioritas' },
+          { description: 'Update fitur minor' },
+          { description: 'Backup data rutin' },
+          { description: 'Respon WhatsApp prioritas (maks 2 jam di jam kerja)' },
+          { description: 'Laporan kesehatan sistem bulanan' },
+        ],
+        callToAction: {
+          text: 'Pilih Paket Tenang',
+          href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20dengan%20Paket%20Tenang.',
+          target: '_blank',
+        },
+      },
+    ]}
+  />
+
+  <!-- FAQ Section -->
+  <FAQs
+    title="Pertanyaan yang Sering Ditanyakan"
+    subtitle="Masih ada yang belum jelas? Tanya kami langsung via WhatsApp."
+    columns={1}
+    items={[
+      {
+        title: 'Apakah ada biaya bulanan selain jasa pembuatan?',
+        description:
+          'Jasa pembuatan adalah biaya sekali bayar. Namun, untuk sistem "Terima Beres" yang aman dan profesional, Anda memerlukan akun server cloud (Google Workspace) dengan biaya sekitar <strong>Rp 15.000 - Rp 20.000 per hari</strong>. Ini ditagih langsung oleh Google atau melalui kami untuk perpanjangan. Ini adalah standar keamanan data usaha Anda agar tidak hilang atau bocor.',
+        icon: 'tabler:currency-dollar',
+      },
+      {
+        title: 'Berapa lama proses pembuatannya?',
+        description:
+          'Rata-rata <strong>7-14 hari kerja</strong> tergantung kompleksitas. Paket Rapi biasanya selesai dalam <strong>5 hari kerja</strong>. Kami akan update progres lewat WhatsApp setiap hari.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Kalau saya tidak paham IT, bisa pakai tidak?',
+        description:
+          '<strong>Justru itulah tujuan kami.</strong> Sistem dirancang untuk orang awam. Kami latih sampai Anda dan tim bisa pakai sendiri. Kalau ada yang lupa, tinggal tanya kami via WhatsApp. Tidak ada pertanyaan bodoh.',
+        icon: 'tabler:help',
+      },
+      {
+        title: 'Apakah bisa request fitur khusus?',
+        description:
+          '<strong>Bisa.</strong> Kami akan diskusikan dulu kebutuhan spesifik usaha Anda saat konsultasi gratis. Nanti kami beri tahu apakah masuk dalam paket standar atau perlu penyesuaian harga. Transparansi adalah prioritas kami.',
+        icon: 'tabler:adjustments',
+      },
+    ]}
+  />
+
+  <!-- CTA Section -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Tanya Paket yang Cocok',
+        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20bingung%20memilih%20paket.%20Bisa%20bantu%20rekomendasikan%3F',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <span class="text-godev-accent">Bingung Memilih Paket?</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Ceritakan kebutuhan usaha Anda, kami bantu pilihkan paket yang paling cocok.<br class="hidden md:inline" />
+      Konsultasi gratis, tidak ada paksaan untuk langsung beli.
+    </Fragment>
+  </CallToAction>
+</Layout>

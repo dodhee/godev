@@ -1,0 +1,135 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import FormKontak from '~/components/FormKontak.astro';
+
+const metadata = {
+  title: 'Kontak & Konsultasi Gratis - GoDev',
+  description:
+    'Hubungi kami untuk konsultasi gratis tentang otomasi usaha Anda. Respon cepat di jam kerja. Tidak ada paksaan untuk berlangganan.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      Mari <span class="text-godev-primary">Ngobrol Dulu.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-normal">
+        Tidak harus langsung berlangganan. Ceritakan masalah usaha Anda,<br />
+        <span class="font-semibold">kami beri saran gratis.</span>
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Contact Section -->
+  <section class="py-12 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <!-- Left Column: Info -->
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Kenapa Harus Hubungi Kami?</h2>
+            <div class="space-y-4 text-gray-600 dark:text-gray-300">
+              <div class="flex items-start gap-3">
+                <span class="icon-[tabler--clock] h-6 w-6 text-godev-primary flex-shrink-0 mt-1"></span>
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Respon Cepat di Jam Kerja</p>
+                  <p class="text-sm">Senin - Jumat, 09.00 - 17.00 WIB. Kami balas maksimal 2 jam.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="icon-[tabler--ear] h-6 w-6 text-godev-primary flex-shrink-0 mt-1"></span>
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Kami Siap Mendengarkan</p>
+                  <p class="text-sm">
+                    Ceritakan masalah usaha Anda dengan bahasa Anda sendiri. Tidak perlu pakai istilah IT yang ribet.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="icon-[tabler--circle-check] h-6 w-6 text-godev-primary flex-shrink-0 mt-1"></span>
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Tidak Ada Paksaan</p>
+                  <p class="text-sm">
+                    Konsultasi pertama selalu gratis. Kami beri saran jujur, bukan jualan paksa. Kalau memang tidak
+                    cocok, kami akan bilang terus terang.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="icon-[tabler--shield-check] h-6 w-6 text-godev-primary flex-shrink-0 mt-1"></span>
+                <div>
+                  <p class="font-semibold text-gray-900 dark:text-white">Data Anda Aman</p>
+                  <p class="text-sm">
+                    Semua informasi yang Anda berikan dijaga kerahasiaannya. Kami tidak pernah bagikan data klien ke
+                    pihak lain.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Contact Info -->
+          <div class="bg-godev-primary/5 dark:bg-slate-800 rounded-lg p-6 border border-godev-primary/20">
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-3">Informasi Kontak</h3>
+            <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <div class="flex items-center gap-2">
+                <span class="icon-[tabler--brand-whatsapp] h-5 w-5 text-godev-accent"></span>
+                <span>+62 812-3479-6567</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="icon-[tabler--clock] h-5 w-5 text-godev-primary"></span>
+                <span>Senin - Jumat: 09.00 - 17.00 WIB</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="icon-[tabler--mail] h-5 w-5 text-godev-primary"></span>
+                <span>info@godev.biz.id</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Form -->
+        <div
+          class="bg-white dark:bg-slate-900 rounded-lg shadow-xl dark:shadow-none dark:border dark:border-slate-700 p-6 md:p-8"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Hubungi Kami</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">Pilih cara yang paling nyaman untuk Anda:</p>
+
+          <!-- WhatsApp Button (Primary) -->
+          <a
+            href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20ingin%20konsultasi%20tentang%20otomasi%20usaha%20saya."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full bg-godev-accent hover:bg-godev-accent/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 mb-6"
+          >
+            <span class="icon-[tabler--brand-whatsapp] h-6 w-6"></span>
+            Chat WhatsApp Sekarang
+          </a>
+
+          <!-- Divider -->
+          <div class="relative mb-6">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-4 bg-white dark:bg-slate-900 text-gray-500 dark:text-gray-400">
+                Atau tinggalkan pesan
+              </span>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <FormKontak />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

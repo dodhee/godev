@@ -1,0 +1,160 @@
+---
+// Formspree endpoint dari environment variable
+// Setup: Daftar di https://formspree.io (gratis), buat form, copy endpoint ke .env
+const formspreeEndpoint = import.meta.env.FORMSPREE_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<form id="form-kontak" action={formspreeEndpoint} method="POST" class={`space-y-4 ${className}`}>
+  <!-- Nama Usaha -->
+  <div>
+    <label for="nama_usaha" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+      Nama Usaha <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="text"
+      id="nama_usaha"
+      name="nama_usaha"
+      required
+      placeholder="Contoh: Toko Berkah Jaya"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-godev-primary focus:border-transparent dark:bg-slate-800 dark:text-white"
+    />
+  </div>
+
+  <!-- Nomor WhatsApp -->
+  <div>
+    <label for="nomor_wa" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+      Nomor WhatsApp <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="tel"
+      id="nomor_wa"
+      name="nomor_wa"
+      required
+      placeholder="628123456789 (tanpa spasi)"
+      pattern="^62\d{9,13}$"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-godev-primary focus:border-transparent dark:bg-slate-800 dark:text-white"
+    />
+    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Format: 62 diikuti 9-13 digit angka</p>
+  </div>
+
+  <!-- Masalah Usaha -->
+  <div>
+    <label for="masalah" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+      Ceritakan Masalah Usaha Anda <span class="text-red-500">*</span>
+    </label>
+    <textarea
+      id="masalah"
+      name="masalah"
+      required
+      rows="4"
+      placeholder="Contoh: Saya punya toko retail, sering selisih stok barang dan catatan keuangan campur aduk dengan uang pribadi..."
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-godev-primary focus:border-transparent dark:bg-slate-800 dark:text-white resize-none"
+    ></textarea>
+  </div>
+
+  <!-- Hidden field untuk Formspree (auto-detect form name) -->
+  <input type="hidden" name="_subject" value="Pesan Kontak Baru dari GoDev.biz.id" />
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="w-full bg-godev-accent hover:bg-godev-accent/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+  >
+    <span class="icon-[tabler--send] h-5 w-5"></span>
+    Kirim Pesan
+  </button>
+
+  <!-- Status Messages -->
+  <div id="form-status" class="hidden mt-4 p-4 rounded-lg"></div>
+</form>
+
+<script>
+  // Client-side form validation dan feedback
+  const form = document.getElementById('form-kontak') as HTMLFormElement;
+  const statusDiv = document.getElementById('form-status') as HTMLDivElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalButtonText = submitButton.innerHTML;
+
+      // Disable button dan show loading
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="icon-[tabler--loader-2] h-5 w-5 animate-spin"></span> Mengirim...';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          // Success
+          statusDiv.className =
+            'block mt-4 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800';
+          statusDiv.innerHTML =
+            '<strong>✅ Pesan berhasil dikirim!</strong><br/>Kami akan menghubungi Anda via WhatsApp dalam 1x24 jam (hari kerja).';
+          form.reset();
+        } else {
+          // Error from Formspree
+          const data = await response.json();
+          throw new Error(data.error || 'Gagal mengirim pesan');
+        }
+      } catch (error) {
+        // Network error or other issues
+        statusDiv.className =
+          'block mt-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800';
+        statusDiv.innerHTML = `<strong>❌ Terjadi kesalahan:</strong><br/>${error instanceof Error ? error.message : 'Silakan coba lagi atau hubungi kami via WhatsApp langsung.'} `;
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+      }
+    });
+
+    // Real-time validation untuk nomor WA
+    const nomorWaInput = document.getElementById('nomor_wa') as HTMLInputElement;
+    if (nomorWaInput) {
+      nomorWaInput.addEventListener('input', (e) => {
+        const input = e.target as HTMLInputElement;
+        const value = input.value.replace(/\D/g, ''); // Hapus non-digit
+        input.value = value;
+
+        // Validasi pattern
+        if (value && !/^62\d{9,13}$/.test(value)) {
+          input.setCustomValidity('Format harus: 62 diikuti 9-13 digit angka (contoh: 628123456789)');
+        } else {
+          input.setCustomValidity('');
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  /* Styling untuk autofill browser */
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px white inset;
+  }
+
+  :global(.dark) input:-webkit-autofill,
+  :global(.dark) textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1e293b inset;
+    box-shadow: 0 0 0 1000px #1e293b inset;
+    -webkit-text-fill-color: white;
+  }
+</style>

@@ -53,6 +53,7 @@ AstroWind template (latest stable, open-source, gratis)
 Tailwind CSS 4.3.2 (dengan Vite plugin)
 Formspree (gratis tier: 50 submissions/bulan) untuk handle form kontak
 Cloudflare Pages (gratis) untuk deployment
+Cupa CMS untuk isi konten blog
 WhatsApp personal dengan pre-filled message (gratis)
 Gunakan Prettier untuk formatter
 Gunakan npm sebagai default, jangan pnpm

@@ -1,0 +1,130 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Blog: Tips Otomasi Bisnis untuk UMKM Indonesia | GoDev',
+  description: 'Artikel, tutorial, dan tips praktis tentang otomasi bisnis untuk UMKM. Belajar cara efisienkan operasional usaha Anda.',
+};
+
+const blogPosts = [
+  {
+    title: '5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat)',
+    slug: '5-tanda-umkm-butuh-otomasi',
+    description: 'Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.',
+    date: '2026-07-01',
+    category: 'Otomasi Bisnis',
+    readTime: '8 menit'
+  },
+  {
+    title: 'Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)',
+    slug: 'cara-otomasi-buku-kas-google-sheets',
+    description: 'Tutorial lengkap membuat buku kas otomatis yang mencatat transaksi, kirim laporan harian via WhatsApp, dan bisa diakses dari mana saja. Gratis!',
+    date: '2026-07-02',
+    category: 'Tutorial',
+    readTime: '12 menit'
+  },
+  {
+    title: 'Google Workspace vs Excel: Mana yang Lebih Cocok untuk UMKM?',
+    slug: 'google-workspace-vs-excel-umkm',
+    description: 'Perbandingan lengkap Google Workspace dan Excel untuk kebutuhan UMKM. Mana yang lebih hemat, praktis, dan scalable untuk bisnis Anda?',
+    date: '2026-07-03',
+    category: 'Perbandingan',
+    readTime: '10 menit'
+  },
+  {
+    title: '7 Kesalahan Fatal UMKM Saat Implementasi Sistem Otomasi',
+    slug: 'kesalahan-umkm-implementasi-sistem',
+    description: 'Banyak UMKM gagal implementasi sistem otomasi karena kesalahan klasik ini. Pelajari dari pengalaman 50+ UMKM agar Anda tidak mengulang kesalahan yang sama.',
+    date: '2026-07-04',
+    category: 'Best Practices',
+    readTime: '15 menit'
+  },
+  {
+    title: 'ROI Investasi Sistem Otomasi: Berapa Lama Balik Modal?',
+    slug: 'roi-investasi-sistem-otomasi',
+    description: 'Perhitungan detail ROI sistem otomasi untuk UMKM. Berapa biaya, berapa savings, dan kapan break even? Data real dari 50+ bisnis.',
+    date: '2026-07-05',
+    category: 'ROI & Investasi',
+    readTime: '14 menit'
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <section class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-7xl">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        Blog <span class="text-godev-primary">GoDev</span>
+      </h1>
+      <p class="text-xl text-muted mt-4 max-w-3xl mx-auto">
+        Tips praktis, tutorial lengkap, dan insight tentang otomasi bisnis untuk UMKM Indonesia.
+        Ditulis berdasarkan pengalaman real di lapangan.
+      </p>
+    </div>
+
+    <!-- Categories Filter -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <button class="px-4 py-2 rounded-full bg-godev-primary text-white font-semibold text-sm">
+        Semua Artikel
+      </button>
+      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+        Tutorial
+      </button>
+      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+        Tips Bisnis
+      </button>
+      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+        Perbandingan
+      </button>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {blogPosts.map((post) => (
+        <article class="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="h-48 bg-linear-to-br from-godev-primary to-godev-accent"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-3 text-sm text-muted">
+              <span class="px-3 py-1 bg-godev-primary/10 text-godev-primary rounded-full font-semibold">
+                {post.category}
+              </span>
+              <span>{post.date}</span>
+              <span>• {post.readTime}</span>
+            </div>
+            <h2 class="text-xl font-bold mb-3 hover:text-godev-primary">
+              <a href={`/blog/${post.slug}`}>{post.title}</a>
+            </h2>
+            <p class="text-muted mb-4 line-clamp-3">
+              {post.description}
+            </p>
+            <a
+              href={`/blog/${post.slug}`}
+              class="inline-flex items-center text-godev-primary font-semibold hover:underline"
+            >
+              Baca Selengkapnya
+              <Icon name="tabler:arrow-right" class="w-4 h-4 ml-2" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Newsletter Subscription (Optional) -->
+    <div class="mt-16 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white text-center">
+      <h2 class="text-2xl font-bold mb-3">Mau Update Artikel Terbaru?</h2>
+      <p class="mb-6 max-w-2xl mx-auto">
+        Dapatkan tips otomasi bisnis langsung di WhatsApp Anda. Tidak spam, hanya konten berkualitas.
+      </p>
+      <a
+        href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20subscribe%20update%20artikel%20blog"
+        class="inline-block px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Subscribe via WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

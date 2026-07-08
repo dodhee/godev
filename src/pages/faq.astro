@@ -1,0 +1,127 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { faqItems } from '~/data/faq';
+
+const metadata = {
+  title: 'FAQ Lengkap - Pertanyaan Seputar Otomasi Bisnis | GoDev',
+  description: '20+ pertanyaan yang paling sering ditanyakan tentang jasa otomasi bisnis GoDev. Temukan jawaban lengkap sebelum konsultasi.',
+};
+
+// Group FAQ by category
+const faqByCategory = faqItems.reduce((acc, item) => {
+  if (!acc[item.category]) {
+    acc[item.category] = [];
+  }
+  acc[item.category].push(item);
+  return acc;
+}, {} as Record<string, typeof faqItems>);
+
+const categoryIcons = {
+  'Harga & Pembayaran': 'tabler:currency-dollar',
+  'Teknis & Implementasi': 'tabler:tools',
+  'Support & Maintenance': 'tabler:lifebuoy',
+  'Keamanan & Data': 'tabler:shield-lock',
+  'Umum': 'tabler:help'
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        Pertanyaan yang <span class="text-godev-primary">Sering Ditanyakan</span>
+      </h1>
+      <p class="text-xl text-muted mt-4 max-w-3xl mx-auto">
+        {faqItems.length}+ jawaban lengkap untuk pertanyaan yang paling sering kami terima.
+        Tidak menemukan jawaban? Chat kami di WhatsApp.
+      </p>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="mb-12 p-6 bg-gray-50 dark:bg-slate-900 rounded-lg">
+      <h2 class="text-lg font-bold mb-4">Navigasi Cepat:</h2>
+      <div class="flex flex-wrap gap-3">
+        {Object.keys(faqByCategory).map((category) => (
+          <a
+            href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
+            class="px-4 py-2 bg-white dark:bg-slate-800 rounded-lg shadow hover:shadow-md transition text-sm font-semibold"
+          >
+            {category} ({faqByCategory[category].length})
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ by Category -->
+    {Object.entries(faqByCategory).map(([category, items]) => (
+      <div id={category.toLowerCase().replace(/\s+/g, '-')} class="mb-16">
+        <div class="flex items-center gap-3 mb-6 pb-3 border-b-2 border-godev-primary">
+          <Icon name={categoryIcons[category as keyof typeof categoryIcons]} class="w-8 h-8 text-godev-primary" />
+          <h2 class="text-2xl font-bold">{category}</h2>
+          <span class="text-sm text-muted">({items.length} pertanyaan)</span>
+        </div>
+
+        <div class="space-y-6">
+          {items.map((item, index) => (
+            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-lg font-bold mb-3 flex items-start">
+                <span class="shrink-0 w-8 h-8 rounded-full bg-godev-primary text-white flex items-center justify-center text-sm font-bold mr-3">
+                  {index + 1}
+                </span>
+                {item.question}
+              </h3>
+              <div class="ml-11 text-muted" set:html={item.answer} />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <!-- CTA Bottom -->
+    <div class="mt-16 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white text-center">
+      <h2 class="text-2xl font-bold mb-3">Pertanyaan Anda Belum Terjawab?</h2>
+      <p class="mb-6 max-w-2xl mx-auto">
+        Jangan ragu untuk bertanya langsung kepada kami. Kami siap menjawab dengan jelas dan transparan.
+        <strong>Tidak ada pertanyaan bodoh!</strong>
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20punya%20pertanyaan%20tentang"
+          class="inline-flex items-center justify-center px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="tabler:brand-whatsapp" class="w-5 h-5 mr-2" />
+          Tanya via WhatsApp
+        </a>
+        <a
+          href="/kontak"
+          class="inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-godev-primary transition"
+        >
+          Hubungi Kami
+        </a>
+      </div>
+    </div>
+
+    <!-- Related Links -->
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <a href="/harga" class="p-6 bg-gray-50 dark:bg-slate-900 rounded-lg hover:shadow-lg transition text-center">
+        <Icon name="tabler:currency-dollar" class="w-12 h-12 mx-auto mb-3 text-godev-primary" />
+        <h3 class="font-bold mb-2">Lihat Paket & Harga</h3>
+        <p class="text-sm text-muted">Mulai dari Rp 750.000</p>
+      </a>
+      <a href="/glossary" class="p-6 bg-gray-50 dark:bg-slate-900 rounded-lg hover:shadow-lg transition text-center">
+        <Icon name="tabler:book" class="w-12 h-12 mx-auto mb-3 text-godev-primary" />
+        <h3 class="font-bold mb-2">Glossary Istilah</h3>
+        <p class="text-sm text-muted">Pahami istilah teknis</p>
+      </a>
+      <a href="/blog" class="p-6 bg-gray-50 dark:bg-slate-900 rounded-lg hover:shadow-lg transition text-center">
+        <Icon name="tabler:article" class="w-12 h-12 mx-auto mb-3 text-godev-primary" />
+        <h3 class="font-bold mb-2">Baca Blog</h3>
+        <p class="text-sm text-muted">Tips & tutorial lengkap</p>
+      </a>
+    </div>
+  </section>
+</Layout>

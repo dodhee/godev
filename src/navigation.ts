@@ -88,7 +88,7 @@ export const footerData = {
   footNote: `
     <p class="text-sm text-muted">
       GoDev © ${new Date().getFullYear()} · Jasa Done-For-You Otomatisasi Google Workspace untuk UMKM<br/>
-      Dibuat dengan ❤️ untuk UMKM Indonesia oleh dody [mbah]
+      Dibuat dengan ❤️ untuk UMKM Indonesia oleh <strong>dody [mbah]</strong>
     </p>
   `,
 };

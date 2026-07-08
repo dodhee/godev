@@ -1,0 +1,243 @@
+---
+/**
+ * TestimonialsCarousel - Komponen testimoni dengan smooth carousel
+ * 
+ * Menampilkan testimoni pelanggan GoDev dengan auto-scroll carousel
+ */
+
+import { Icon } from 'astro-icon/components';
+import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+
+interface Testimonial {
+  name: string;
+  job: string;
+  title: string;
+  testimonial: string;
+  image?: string | null;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  testimonials?: Testimonial[];
+  id?: string;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+  bg?: string;
+}
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  testimonials = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div class="relative max-w-6xl mx-auto">
+    <!-- Carousel Container -->
+    <div class="overflow-hidden" data-carousel>
+      <div class="flex transition-transform duration-500 ease-in-out" data-carousel-track>
+        {
+          testimonials &&
+            testimonials.map(({ title, testimonial, name, job, image }) => (
+              <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-3" data-carousel-item>
+                <div class="flex h-full">
+                  <div class="flex flex-col p-6 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                    <div class="flex items-center mb-4">
+                      {image ? (
+                        typeof image === 'string' ? (
+                          <img
+                            src={image}
+                            alt={name}
+                            class="w-12 h-12 rounded-full object-cover mr-4"
+                          />
+                        ) : (
+                          <div class="w-12 h-12 rounded-full bg-godev-primary flex items-center justify-center text-white font-bold text-lg mr-4">
+                            {name.charAt(0)}
+                          </div>
+                        )
+                      ) : (
+                        <div class="w-12 h-12 rounded-full bg-godev-primary flex items-center justify-center text-white font-bold text-lg mr-4">
+                          {name.charAt(0)}
+                        </div>
+                      )}
+                      <div>
+                        <p class="font-semibold text-base">{name}</p>
+                        <p class="text-sm text-muted">{job}</p>
+                      </div>
+                    </div>
+                    
+                    {title && (
+                      <h3 class="font-semibold text-lg mb-2">{title}</h3>
+                    )}
+                    
+                    <div class="flex mb-3">
+                      {[...Array(5)].map(() => (
+                        <Icon name="tabler:star-filled" class="w-5 h-5 text-yellow-400" />
+                      ))}
+                    </div>
+                    
+                    <blockquote class="grow">
+                      <p class="text-muted italic">"{testimonial}"</p>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            ))
+        }
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button
+      data-carousel-prev
+      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white dark:bg-slate-800 p-2 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors z-10"
+      aria-label="Previous testimonial"
+    >
+      <Icon name="tabler:chevron-left" class="w-6 h-6 text-gray-700 dark:text-gray-300" />
+    </button>
+
+    <button
+      data-carousel-next
+      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white dark:bg-slate-800 p-2 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors z-10"
+      aria-label="Next testimonial"
+    >
+      <Icon name="tabler:chevron-right" class="w-6 h-6 text-gray-700 dark:text-gray-300" />
+    </button>
+
+    <!-- Dots Indicator -->
+    <div class="flex justify-center gap-2 mt-6" data-carousel-dots>
+      {
+        testimonials &&
+          testimonials.map((_, index) => (
+            <button
+              data-carousel-dot={index}
+              class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-godev-primary transition-colors"
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))
+      }
+    </div>
+  </div>
+</WidgetWrapper>
+
+<script>
+  function initCarousel() {
+    const carousel = document.querySelector('[data-carousel]');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('[data-carousel-track]') as HTMLElement;
+    const prevBtn = document.querySelector('[data-carousel-prev]');
+    const nextBtn = document.querySelector('[data-carousel-next]');
+    const dots = document.querySelectorAll('[data-carousel-dot]');
+    const items = carousel.querySelectorAll('[data-carousel-item]');
+
+    let currentIndex = 0;
+    let autoPlayInterval: number;
+
+    // Determine items per view based on screen size
+    function getItemsPerView(): number {
+      if (window.innerWidth >= 1024) return 3; // lg
+      if (window.innerWidth >= 640) return 2; // sm
+      return 1;
+    }
+
+    function updateCarousel() {
+      const itemsPerView = getItemsPerView();
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      
+      // Clamp current index
+      currentIndex = Math.min(currentIndex, maxIndex);
+      
+      const offset = -(currentIndex * (100 / itemsPerView));
+      track.style.transform = `translateX(${offset}%)`;
+
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add('bg-godev-primary');
+          dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+        } else {
+          dot.classList.remove('bg-godev-primary');
+          dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
+        }
+      });
+    }
+
+    function next() {
+      const itemsPerView = getItemsPerView();
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
+      updateCarousel();
+    }
+
+    function prev() {
+      const itemsPerView = getItemsPerView();
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
+      updateCarousel();
+    }
+
+    function goToSlide(index: number) {
+      currentIndex = index;
+      updateCarousel();
+      resetAutoPlay();
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = window.setInterval(next, 5000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+    }
+
+    // Event listeners
+    prevBtn?.addEventListener('click', () => {
+      prev();
+      resetAutoPlay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      next();
+      resetAutoPlay();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index));
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Handle window resize
+    let resizeTimeout: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(updateCarousel, 150);
+    });
+
+    // Initialize
+    updateCarousel();
+    startAutoPlay();
+  }
+
+  // Initialize on page load
+  document.addEventListener('astro:page-load', initCarousel);
+</script>

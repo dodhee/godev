@@ -1,0 +1,260 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Glossary: Istilah Teknis Otomasi Bisnis | GoDev',
+  description: 'Kamus istilah teknis otomasi bisnis dalam bahasa sederhana. Pahami API, Cloud, Dashboard, dan istilah lainnya tanpa ribet.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const glossaryItems = [
+  {
+    term: 'API (Application Programming Interface)',
+    definition: 'Jembatan yang menghubungkan dua software agar bisa "ngobrol". Contoh: API WhatsApp memungkinkan sistem booking Anda kirim notifikasi otomatis ke HP pelanggan.',
+    example: 'Sistem Anda kirim data booking → API WhatsApp → Pelanggan dapat notifikasi di HP'
+  },
+  {
+    term: 'Apps Script',
+    definition: 'Bahasa pemrograman dari Google untuk otomasi Google Sheets, Docs, Gmail, dll. Seperti "macro" di Excel tapi lebih powerful. Kami pakai ini untuk bikin sistem otomasi Anda.',
+    example: 'Form booking diisi → Apps Script proses data → Kirim email konfirmasi otomatis'
+  },
+  {
+    term: 'Automation (Otomasi)',
+    definition: 'Membuat pekerjaan berulang dikerjakan komputer secara otomatis tanpa intervensi manusia. Hemat waktu, kurangi error.',
+    example: 'Manual: Admin catat transaksi 1 per 1 (3 menit/transaksi). Otomasi: Sistem catat otomatis (0 menit)'
+  },
+  {
+    term: 'Backup',
+    definition: 'Salinan data untuk jaga-jaga kalau data asli hilang/rusak. Seperti fotocopy dokumen penting.',
+    example: 'Data di Google Sheets di-backup ke Google Drive setiap minggu. Kalau ada masalah, bisa restore dari backup.'
+  },
+  {
+    term: 'Bot / Chatbot',
+    definition: 'Program komputer yang bisa balas chat otomatis. Seperti "robot" yang jawab pertanyaan pelanggan 24/7.',
+    example: 'Pelanggan: "Jam buka?" → Bot: "Kami buka Senin-Jumat 09:00-17:00 WIB"'
+  },
+  {
+    term: 'Break Even',
+    definition: 'Titik impas. Waktu di mana investasi Anda sudah balik modal (untung = 0). Setelah ini, mulai profit.',
+    example: 'Invest sistem Rp 1.500.000. Hemat Rp 750.000/bulan. Break even = 2 bulan.'
+  },
+  {
+    term: 'Cloud / Cloud Storage',
+    definition: 'Penyimpanan data di internet (server Google, bukan di komputer/flashdisk Anda). Bisa diakses dari mana saja.',
+    example: 'Data di Google Drive = cloud. Data di flashdisk = local. Cloud lebih aman karena tidak hilang walau laptop rusak.'
+  },
+  {
+    term: 'CRM (Customer Relationship Management)',
+    definition: 'Sistem untuk kelola data pelanggan: kontak, riwayat transaksi, preferensi, follow-up. Biar tidak lupa pelanggan mana yang belum di-follow up.',
+    example: 'Pak Budi beli mobil 2 tahun lalu. Sistem remind: "Waktunya service tahunan Pak Budi"'
+  },
+  {
+    term: 'CSV (Comma-Separated Values)',
+    definition: 'Format file data simpel, seperti Excel tapi lebih basic. Hampir semua software bisa baca CSV.',
+    example: 'Export data dari Tokopedia → Download file CSV → Import ke Google Sheets'
+  },
+  {
+    term: 'Dashboard',
+    definition: 'Halaman tampilan yang show ringkasan data penting dalam bentuk angka, grafik, chart. Seperti "dashboard" mobil yang show kecepatan, bensin, suhu.',
+    example: 'Dashboard bisnis: Omzet hari ini Rp 2.5 juta, Transaksi 23 kali, Produk terlaris: Nasi Goreng'
+  },
+  {
+    term: 'Database',
+    definition: 'Tempat penyimpanan data terstruktur. Seperti lemari arsip digital yang rapi. Google Sheets bisa dianggap database sederhana.',
+    example: 'Database pelanggan: Nama, No HP, Email, Alamat, Riwayat Pembelian'
+  },
+  {
+    term: 'Done-For-You (DFY)',
+    definition: 'Jasa di mana kami yang kerjakan semuanya untuk Anda. Anda tinggal terima beres dan pakai. Kebalikan dari DIY (Do It Yourself).',
+    example: 'Anda cerita kebutuhan → Kami design, bangun, training → Anda tinggal pakai'
+  },
+  {
+    term: 'Double Booking',
+    definition: 'Kesalahan di mana 1 resource (kamar hotel, mobil rental, jadwal service) dipesan oleh 2 orang berbeda di waktu sama. Nightmare untuk bisnis.',
+    example: 'Kamar 101 ternyata sudah dipesan Pak Andi dan Bu Siti untuk tanggal 10 Juli yang sama. Chaos!'
+  },
+  {
+    term: 'Dropdown',
+    definition: 'Menu pilihan yang muncul saat diklik. Mencegah salah ketik karena user tinggal pilih, tidak perlu ngetik manual.',
+    example: 'Metode Bayar: [dropdown: Cash / Transfer / E-wallet]. Tidak bisa typo "Cas" atau "Tranfer"'
+  },
+  {
+    term: 'Export / Import',
+    definition: 'Export = keluarkan data dari sistem (misal: download jadi Excel). Import = masukkan data ke sistem (misal: upload file Excel ke Sheets).',
+    example: 'Export: Google Sheets → Download as Excel. Import: Excel → Upload ke Google Sheets'
+  },
+  {
+    term: 'Form (Google Form)',
+    definition: 'Formulir online untuk isi data. Seperti formulir kertas, tapi digital. Data yang diisi otomatis masuk ke Google Sheets.',
+    example: 'Pelanggan isi form booking (nama, tanggal, layanan) → Data masuk Sheets → Admin lihat langsung'
+  },
+  {
+    term: 'Formula',
+    definition: 'Rumus di Google Sheets untuk hitung otomatis. Seperti rumus matematika. Kalau data berubah, hasil hitung otomatis update.',
+    example: '=SUM(A1:A10) artinya jumlahkan cell A1 sampai A10. Kalau A1 berubah, total otomatis berubah.'
+  },
+  {
+    term: 'Google Workspace',
+    definition: 'Paket lengkap dari Google untuk bisnis: Gmail profesional, Google Drive unlimited, Google Meet, Docs, Sheets, dll. Dulu namanya G Suite.',
+    example: 'Email jadi nama@bisnisanda.com (bukan namabisnis123@gmail.com), storage 30GB per user, support 24/7'
+  },
+  {
+    term: 'Integration (Integrasi)',
+    definition: 'Menghubungkan 2 sistem agar bisa kerja bareng. Data mengalir otomatis dari sistem A ke sistem B.',
+    example: 'Integrasi WhatsApp + Google Sheets: Data masuk Sheets → Notifikasi otomatis ke WhatsApp'
+  },
+  {
+    term: 'Inventory',
+    definition: 'Stok barang/produk yang Anda punya. Sistem inventory tracking = catat keluar-masuk barang otomatis, tahu stok real-time.',
+    example: 'Jual 5 Nasi Goreng → Stok Nasi Goreng otomatis berkurang 5 di sistem → Kalau stok < 10, alert otomatis'
+  },
+  {
+    term: 'JSON',
+    definition: 'Format data yang dipakai software untuk tukar informasi. Seperti "bahasa" yang dipakai komputer untuk ngobrol. Anda tidak perlu paham detail ini.',
+    example: 'API kirim data booking dalam format JSON → Sistem terima dan proses'
+  },
+  {
+    term: 'KPI (Key Performance Indicator)',
+    definition: 'Angka penting untuk ukur performa bisnis. Seperti rapor bisnis. Contoh: omzet/bulan, jumlah pelanggan baru, closing rate.',
+    example: 'KPI rental mobil: Utilization rate 85% (bagus), Closing rate 60% (cukup bagus), Revenue Rp 50 juta/bulan'
+  },
+  {
+    term: 'Macro',
+    definition: 'Serangkaian perintah yang direkam dan bisa dijalankan berulang dengan 1 klik. Untuk automate tugas repetitif. Di Excel disebut VBA Macro.',
+    example: 'Macro "Tutup Buku": 1) Sort data by date, 2) Sum total, 3) Generate report, 4) Send email. Tinggal klik 1x, semuanya jalan.'
+  },
+  {
+    term: 'Migration (Migrasi)',
+    definition: 'Pindahkan data dari sistem lama ke sistem baru. Seperti pindahan rumah, tapi data.',
+    example: 'Data pelanggan di buku tulis → Diketik ke Excel → Import ke Google Sheets (sistem baru)'
+  },
+  {
+    term: 'Notification (Notifikasi)',
+    definition: 'Pemberitahuan otomatis yang muncul (via email, WhatsApp, SMS, atau pop-up). Biar tidak lupa atau ketinggalan info penting.',
+    example: 'Ada booking baru → Notifikasi WhatsApp ke pemilik: "Pak Budi booking mobil Avanza 10-12 Juli"'
+  },
+  {
+    term: 'Real-time',
+    definition: 'Data update langsung saat itu juga. Tidak ada delay. Kalau kasir input penjualan, pemilik langsung lihat di dashboard.',
+    example: 'Kasir input penjualan Rp 50.000 → Dashboard pemilik (di HP) langsung update omzet hari ini +Rp 50.000'
+  },
+  {
+    term: 'ROI (Return on Investment)',
+    definition: 'Berapa keuntungan yang Anda dapat dibanding investasi yang Anda keluarkan. Dihitung dalam persen.',
+    example: 'Invest sistem Rp 1.500.000. Hemat Rp 9 juta/tahun. ROI = (9 juta - 1.5 juta) / 1.5 juta × 100% = 500%'
+  },
+  {
+    term: 'SaaS (Software as a Service)',
+    definition: 'Software yang dibayar per bulan/tahun (subscription). Anda tidak beli software-nya, tapi "sewa" aksesnya. Contoh: Spotify, Netflix, Zoom.',
+    example: 'Software akuntansi online: Bayar Rp 200.000/bulan, bisa pakai. Stop bayar, akses hilang.'
+  },
+  {
+    term: 'Scalable (Skalabilitas)',
+    definition: 'Sistem yang bisa tumbuh seiring bisnis berkembang tanpa perlu ganti sistem total. Tinggal tambah fitur atau kapasitas.',
+    example: 'Awalnya rental 5 mobil, sistem jalan smooth. Nambah jadi 20 mobil, sistem tetap jalan tanpa perlu rebuild.'
+  },
+  {
+    term: 'Script',
+    definition: 'Kode program untuk automasi. Seperti "resep" yang ditulis dalam bahasa komputer. Kami yang tulis script, Anda tinggal pakai hasilnya.',
+    example: 'Script: "Setiap pagi jam 8, ambil data kemarin, hitung total, kirim laporan via WhatsApp"'
+  },
+  {
+    term: 'SOP (Standard Operating Procedure)',
+    definition: 'Panduan langkah demi langkah cara pakai sistem. Seperti buku manual. Biar staff tidak bingung.',
+    example: 'SOP Input Penjualan: 1) Buka link, 2) Isi form (produk, jumlah, harga), 3) Klik submit, 4) Cek notifikasi WA konfirmasi'
+  },
+  {
+    term: 'Spreadsheet',
+    definition: 'Lembar kerja elektronik dengan baris dan kolom. Seperti tabel besar. Contoh: Google Sheets, Microsoft Excel.',
+    example: 'Buku kas di Google Sheets: Kolom A = Tanggal, Kolom B = Deskripsi, Kolom C = Nominal, dll'
+  },
+  {
+    term: 'Sync / Sinkronisasi',
+    definition: 'Proses update data agar sama di semua device. Kalau Anda edit di laptop, otomatis ter-update di HP juga.',
+    example: 'Edit data di laptop → Save → Buka HP → Data sudah ter-update (karena sync otomatis via cloud)'
+  },
+  {
+    term: 'Template',
+    definition: 'Pola atau cetakan yang bisa dipakai ulang. Sudah ada struktur dasarnya, tinggal isi data Anda.',
+    example: 'Template buku kas: Sudah ada kolom tanggal, deskripsi, nominal, dll. Anda tinggal isi transaksi harian.'
+  },
+  {
+    term: 'Trigger',
+    definition: 'Pemicu otomatis. Event tertentu yang bikin sistem jalan otomatis. Seperti alarm yang bunyi saat jam tertentu.',
+    example: 'Trigger: Setiap hari jam 8 pagi → Sistem generate laporan harian otomatis'
+  },
+  {
+    term: 'UI (User Interface)',
+    definition: 'Tampilan sistem yang Anda lihat dan interaksi dengan. Kalau UI bagus, sistem gampang dipakai (user-friendly).',
+    example: 'UI jelek: Banyak menu, istilah teknis, ribet. UI bagus: Sederhana, jelas, tombol gede, bahasa awam.'
+  },
+  {
+    term: 'Validation (Validasi)',
+    definition: 'Pengecekan otomatis untuk pastikan data yang diinput benar/sesuai format. Cegah salah input.',
+    example: 'Field No HP: Harus angka, minimal 10 digit, tidak boleh huruf. Kalau salah, muncul error: "Format No HP salah"'
+  },
+  {
+    term: 'Webhook',
+    definition: 'Cara sistem A "notify" sistem B kalau ada event tertentu. Seperti doorbell yang bunyi saat ada tamu.',
+    example: 'Ada pembayaran masuk di Payment Gateway → Webhook kirim notifikasi ke sistem Anda → Update status order jadi "Paid"'
+  },
+  {
+    term: 'Workflow',
+    definition: 'Alur kerja dari awal sampai akhir. Urutan step-by-step bagaimana pekerjaan diselesaikan.',
+    example: 'Workflow booking: 1) Pelanggan isi form → 2) Sistem cek ketersediaan → 3) Konfirmasi booking → 4) Kirim invoice → 5) Payment → 6) Send ticket'
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-4xl">
+    <div class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        Glossary: <span class="text-godev-primary">Istilah Teknis dalam Bahasa Manusia</span>
+      </h1>
+      <p class="text-xl text-muted mt-4 max-w-3xl mx-auto">
+        Tidak paham istilah teknis? Tenang, di sini kami jelaskan dengan bahasa sederhana plus contoh real.
+        Tidak ada jargon yang bikin pusing.
+      </p>
+    </div>
+
+    <div class="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+      <p class="text-sm text-muted">
+        <strong>💡 Tips:</strong> Tekan <kbd class="px-2 py-1 bg-white dark:bg-slate-800 rounded border border-gray-300 dark:border-gray-600 text-xs">Ctrl+F</kbd> (Windows) atau <kbd class="px-2 py-1 bg-white dark:bg-slate-800 rounded border border-gray-300 dark:border-gray-600 text-xs">Cmd+F</kbd> (Mac) untuk cari istilah spesifik.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {glossaryItems.map((item) => (
+        <div class="border-l-4 border-godev-primary pl-6 py-4 bg-white dark:bg-slate-900 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
+          <h2 class="text-xl font-bold mb-2 text-godev-primary">{item.term}</h2>
+          <p class="text-base text-default mb-3">{item.definition}</p>
+          <div class="bg-gray-50 dark:bg-slate-800 p-3 rounded-lg">
+            <p class="text-sm text-muted">
+              <strong>Contoh:</strong> {item.example}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 p-8 bg-godev-primary/5 dark:bg-godev-primary/10 rounded-lg text-center">
+      <h2 class="text-2xl font-bold mb-4">Masih Ada Istilah yang Belum Jelas?</h2>
+      <p class="text-muted mb-6">
+        Tanya kami langsung via WhatsApp. Kami akan jelaskan dengan bahasa yang Anda pahami.<br/>
+        <strong>No stupid questions!</strong>
+      </p>
+      <a
+        href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20tanya%20tentang%20istilah%20teknis"
+        class="btn-primary inline-block"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Tanya via WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

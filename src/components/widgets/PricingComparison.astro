@@ -1,0 +1,175 @@
+---
+/**
+ * PricingComparison - Tabel perbandingan detail paket otomasi
+ * 
+ * Menampilkan comparison table lengkap dengan fitur-fitur per paket
+ */
+
+import { Icon } from 'astro-icon/components';
+import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  id?: string;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+  bg?: string;
+}
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const features = [
+  { category: 'Form & Input Data', items: [
+    { name: 'Form input data custom', rapi: true, terimaBeres: true, tenang: false },
+    { name: 'Multi-user input (3+ orang)', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Validasi data otomatis', rapi: false, terimaBeres: true, tenang: false },
+  ]},
+  { category: 'Dashboard & Laporan', items: [
+    { name: 'Dashboard Google Sheets sederhana', rapi: true, terimaBeres: true, tenang: false },
+    { name: 'Dashboard interaktif dengan chart', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Laporan harian otomatis', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Laporan custom sesuai kebutuhan', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Export data ke Excel/PDF', rapi: true, terimaBeres: true, tenang: false },
+  ]},
+  { category: 'Notifikasi & Komunikasi', items: [
+    { name: 'Notifikasi email otomatis', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Notifikasi WhatsApp otomatis', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Reminder otomatis (payment, follow-up)', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Template balasan otomatis', rapi: false, terimaBeres: true, tenang: false },
+  ]},
+  { category: 'Sistem Khusus', items: [
+    { name: 'Sistem booking/reservasi real-time', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Sistem kontrol stok inventory', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Auto-block jadwal untuk cegah bentrok', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Integrasi payment gateway', rapi: false, terimaBeres: 'Add-on', tenang: false },
+  ]},
+  { category: 'Email & Domain', items: [
+    { name: 'Email profesional (nama@bisnisanda.com)', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Setup Google Workspace', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Jumlah akun email', rapi: '0', terimaBeres: '3 akun', tenang: '0' },
+  ]},
+  { category: 'Training & Dokumentasi', items: [
+    { name: 'Training langsung via Zoom/offline', rapi: '1x (1-2 jam)', terimaBeres: '2x (3-4 jam)', tenang: false },
+    { name: 'Video tutorial', rapi: true, terimaBeres: true, tenang: false },
+    { name: 'Dokumentasi SOP lengkap', rapi: 'Basic', terimaBeres: 'Lengkap', tenang: false },
+    { name: 'Training untuk staff baru', rapi: false, terimaBeres: '1x gratis', tenang: false },
+  ]},
+  { category: 'Support & Maintenance', items: [
+    { name: 'Garansi perbaikan bug', rapi: '2 minggu', terimaBeres: '1 bulan', tenang: 'Unlimited' },
+    { name: 'Support via WhatsApp', rapi: 'Jam kerja', terimaBeres: 'Jam kerja', tenang: 'Prioritas (maks 2 jam)' },
+    { name: 'Update fitur minor', rapi: false, terimaBeres: '1 bulan gratis', tenang: true },
+    { name: 'Perbaikan bug prioritas', rapi: false, terimaBeres: false, tenang: true },
+    { name: 'Backup data otomatis', rapi: 'Manual', terimaBeres: 'Weekly', tenang: 'Daily' },
+    { name: 'Monitoring sistem', rapi: false, terimaBeres: false, tenang: true },
+    { name: 'Laporan kesehatan sistem bulanan', rapi: false, terimaBeres: false, tenang: true },
+  ]},
+  { category: 'Lain-lain', items: [
+    { name: 'Revisi unlimited (dalam scope awal)', rapi: false, terimaBeres: true, tenang: false },
+    { name: 'Source code/akses penuh', rapi: true, terimaBeres: true, tenang: true },
+    { name: 'Migrasi data dari sistem lama', rapi: false, terimaBeres: 'Add-on', tenang: false },
+    { name: 'Custom feature tambahan', rapi: 'Add-on', terimaBeres: 'Add-on', tenang: 'Diskon 20%' },
+  ]},
+];
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="border-b-2 border-gray-300 dark:border-gray-600">
+          <th class="py-4 px-6 text-lg font-semibold">Fitur</th>
+          <th class="py-4 px-6 text-center text-lg font-semibold">
+            <div class="text-godev-primary">Rapi</div>
+            <div class="text-sm font-normal text-muted mt-1">Rp 750.000</div>
+          </th>
+          <th class="py-4 px-6 text-center text-lg font-semibold bg-green-50 dark:bg-green-900/20">
+            <div class="text-godev-primary">Terima Beres</div>
+            <div class="text-sm font-normal text-muted mt-1">Rp 1.500.000</div>
+            <div class="text-xs text-green-600 dark:text-green-400 font-semibold mt-1">PALING LARIS</div>
+          </th>
+          <th class="py-4 px-6 text-center text-lg font-semibold">
+            <div class="text-godev-primary">Tenang</div>
+            <div class="text-sm font-normal text-muted mt-1">Rp 350.000/bulan</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {features.map((category) => (
+          <>
+            <tr class="bg-gray-100 dark:bg-slate-800">
+              <td colspan="4" class="py-3 px-6 font-bold text-base">
+                {category.category}
+              </td>
+            </tr>
+            {category.items.map((item, itemIndex) => (
+              <tr class={`border-b border-gray-200 dark:border-gray-700 ${itemIndex % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-gray-50 dark:bg-slate-900/50'}`}>
+                <td class="py-3 px-6 text-sm">{item.name}</td>
+                <td class="py-3 px-6 text-center">
+                  {typeof item.rapi === 'boolean' ? (
+                    item.rapi ? (
+                      <Icon name="tabler:check" class="w-6 h-6 text-green-600 dark:text-green-400 mx-auto" />
+                    ) : (
+                      <Icon name="tabler:x" class="w-6 h-6 text-gray-400 mx-auto" />
+                    )
+                  ) : (
+                    <span class="text-sm text-muted">{item.rapi}</span>
+                  )}
+                </td>
+                <td class="py-3 px-6 text-center bg-green-50/30 dark:bg-green-900/10">
+                  {typeof item.terimaBeres === 'boolean' ? (
+                    item.terimaBeres ? (
+                      <Icon name="tabler:check" class="w-6 h-6 text-green-600 dark:text-green-400 mx-auto" />
+                    ) : (
+                      <Icon name="tabler:x" class="w-6 h-6 text-gray-400 mx-auto" />
+                    )
+                  ) : (
+                    <span class="text-sm text-muted">{item.terimaBeres}</span>
+                  )}
+                </td>
+                <td class="py-3 px-6 text-center">
+                  {typeof item.tenang === 'boolean' ? (
+                    item.tenang ? (
+                      <Icon name="tabler:check" class="w-6 h-6 text-green-600 dark:text-green-400 mx-auto" />
+                    ) : (
+                      <Icon name="tabler:x" class="w-6 h-6 text-gray-400 mx-auto" />
+                    )
+                  ) : (
+                    <span class="text-sm text-muted">{item.tenang}</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-8 text-center">
+    <p class="text-muted text-sm mb-4">
+      <strong>Catatan:</strong> Semua paket sudah termasuk konsultasi gratis untuk analisis kebutuhan bisnis Anda.
+    </p>
+    <a 
+      href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20konsultasi%20paket%20mana%20yang%20cocok%20untuk%20bisnis%20saya"
+      class="btn-primary"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Konsultasi Paket yang Cocok
+      <Icon name="tabler:brand-whatsapp" class="w-5 h-5 ml-2" />
+    </a>
+  </div>
+</WidgetWrapper>

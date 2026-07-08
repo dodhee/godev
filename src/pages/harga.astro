@@ -4,9 +4,13 @@ import Hero from '~/components/widgets/Hero.astro';
 import Pricing from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import PricingComparison from '~/components/widgets/PricingComparison.astro';
 
 // SEO Schema Component
 import FAQPageSchema from '~/components/seo/FAQPageSchema.astro';
+
+// Import FAQ data
+import { faqItems } from '~/data/faq';
 
 const metadata = {
   title: 'Harga & Paket Otomasi Usaha - GoDev',
@@ -14,29 +18,11 @@ const metadata = {
     'Pilih paket otomasi Google Workspace yang sesuai dengan tahap usaha Anda. Harga pasti, tidak ada biaya tersembunyi. Mulai dari Rp 750.000.',
 };
 
-// FAQ data untuk SEO Schema (plain text tanpa HTML)
-const faqSchemaData = [
-  {
-    question: 'Apakah ada biaya bulanan selain jasa pembuatan?',
-    answer:
-      'Jasa pembuatan adalah biaya sekali bayar. Namun, untuk sistem "Terima Beres" yang aman dan profesional, Anda memerlukan akun server cloud (Google Workspace) dengan biaya sekitar Rp 15.000 - Rp 20.000 per hari. Ini ditagih langsung oleh Google atau melalui kami untuk perpanjangan. Ini adalah standar keamanan data usaha Anda agar tidak hilang atau bocor.',
-  },
-  {
-    question: 'Berapa lama proses pembuatannya?',
-    answer:
-      'Rata-rata 7-14 hari kerja tergantung kompleksitas. Paket Rapi biasanya selesai dalam 5 hari kerja. Kami akan update progres lewat WhatsApp setiap hari.',
-  },
-  {
-    question: 'Kalau saya tidak paham IT, bisa pakai tidak?',
-    answer:
-      'Justru itulah tujuan kami. Sistem dirancang untuk orang awam. Kami latih sampai Anda dan tim bisa pakai sendiri. Kalau ada yang lupa, tinggal tanya kami via WhatsApp. Tidak ada pertanyaan bodoh.',
-  },
-  {
-    question: 'Apakah bisa request fitur khusus?',
-    answer:
-      'Bisa. Kami akan diskusikan dulu kebutuhan spesifik usaha Anda saat konsultasi gratis. Nanti kami beri tahu apakah masuk dalam paket standar atau perlu penyesuaian harga. Transparansi adalah prioritas kami.',
-  },
-];
+// FAQ data untuk SEO Schema (plain text tanpa HTML) - ambil dari data/faq.ts
+const faqSchemaData = faqItems.map(item => ({
+  question: item.question,
+  answer: item.answer.replace(/<[^>]*>/g, '') // strip HTML untuk schema
+}));
 ---
 
 <Layout metadata={metadata}>
@@ -119,38 +105,35 @@ const faqSchemaData = [
     ]}
   />
 
-  <!-- FAQ Section -->
-  <FAQs
-    title="Pertanyaan yang Sering Ditanyakan"
-    subtitle="Masih ada yang belum jelas? Tanya kami langsung via WhatsApp."
-    columns={1}
-    items={[
-      {
-        title: 'Apakah ada biaya bulanan selain jasa pembuatan?',
-        description:
-          'Jasa pembuatan adalah biaya sekali bayar. Namun, untuk sistem "Terima Beres" yang aman dan profesional, Anda memerlukan akun server cloud (Google Workspace) dengan biaya sekitar <strong>Rp 15.000 - Rp 20.000 per hari</strong>. Ini ditagih langsung oleh Google atau melalui kami untuk perpanjangan. Ini adalah standar keamanan data usaha Anda agar tidak hilang atau bocor.',
-        icon: 'tabler:currency-dollar',
-      },
-      {
-        title: 'Berapa lama proses pembuatannya?',
-        description:
-          'Rata-rata <strong>7-14 hari kerja</strong> tergantung kompleksitas. Paket Rapi biasanya selesai dalam <strong>5 hari kerja</strong>. Kami akan update progres lewat WhatsApp setiap hari.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Kalau saya tidak paham IT, bisa pakai tidak?',
-        description:
-          '<strong>Justru itulah tujuan kami.</strong> Sistem dirancang untuk orang awam. Kami latih sampai Anda dan tim bisa pakai sendiri. Kalau ada yang lupa, tinggal tanya kami via WhatsApp. Tidak ada pertanyaan bodoh.',
-        icon: 'tabler:help',
-      },
-      {
-        title: 'Apakah bisa request fitur khusus?',
-        description:
-          '<strong>Bisa.</strong> Kami akan diskusikan dulu kebutuhan spesifik usaha Anda saat konsultasi gratis. Nanti kami beri tahu apakah masuk dalam paket standar atau perlu penyesuaian harga. Transparansi adalah prioritas kami.',
-        icon: 'tabler:adjustments',
-      },
-    ]}
+  <!-- Pricing Comparison Table -->
+  <PricingComparison
+    title="Perbandingan Detail Paket"
+    subtitle="Lihat fitur lengkap setiap paket untuk membantu Anda memilih"
   />
+
+  <!-- FAQ Section - Expanded -->
+  <FAQs
+    title="Pertanyaan yang Sering Ditanyakan (FAQ Lengkap)"
+    subtitle="20+ pertanyaan yang paling sering ditanyakan pelanggan. Masih ada yang belum jelas? Tanya kami via WhatsApp."
+    columns={2}
+    items={faqItems.slice(0, 12).map(item => ({
+      title: item.question,
+      description: item.answer,
+      icon: item.category === 'Harga & Pembayaran' ? 'tabler:currency-dollar' :
+            item.category === 'Teknis & Implementasi' ? 'tabler:tools' :
+            item.category === 'Support & Maintenance' ? 'tabler:lifebuoy' :
+            item.category === 'Keamanan & Data' ? 'tabler:shield-lock' :
+            'tabler:help'
+    }))}
+  />
+
+  <!-- Link to Full FAQ Page -->
+  <div class="text-center py-8">
+    <p class="text-muted mb-4">Lihat {faqItems.length - 12}+ pertanyaan lainnya di halaman FAQ lengkap</p>
+    <a href="/faq" class="btn-secondary">
+      Lihat Semua FAQ
+    </a>
+  </div>
 
   <!-- CTA Section -->
   <CallToAction

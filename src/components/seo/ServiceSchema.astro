@@ -1,0 +1,81 @@
+---
+/**
+ * ServiceSchema - Structured data untuk layanan yang ditawarkan
+ *
+ * Fungsi: Membantu Google memahami jenis layanan GoDev
+ * Benefit: Muncul di hasil pencarian layanan/jasa
+ */
+
+interface Service {
+  name: string;
+  description: string;
+  provider: string;
+  areaServed: string;
+  serviceType: string;
+}
+
+interface Props {
+  services?: Service[];
+}
+
+const {
+  services = [
+    {
+      name: 'Otomasi Buku Kas Digital',
+      description:
+        'Sistem pencatatan keuangan otomatis untuk UMKM menggunakan Google Workspace. Setiap transaksi tercatat rapi, laporan harian otomatis.',
+      provider: 'GoDev',
+      areaServed: 'Indonesia',
+      serviceType: 'Automation Service',
+    },
+    {
+      name: 'Sistem Kontrol Stok Real-time',
+      description:
+        'Monitoring stok barang secara real-time dengan notifikasi otomatis saat stok menipis. Pantau dari HP kapan saja.',
+      provider: 'GoDev',
+      areaServed: 'Indonesia',
+      serviceType: 'Inventory Management',
+    },
+    {
+      name: 'Sistem Booking dan Order Otomatis',
+      description:
+        'Pelanggan bisa booking/order sendiri melalui link. Admin terima notifikasi otomatis. Cocok untuk rental, homestay, dan retail.',
+      provider: 'GoDev',
+      areaServed: 'Indonesia',
+      serviceType: 'Booking System',
+    },
+  ],
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Business Automation Service',
+  provider: {
+    '@type': 'Organization',
+    name: 'GoDev',
+    url: 'https://godev.biz.id',
+    telephone: '+62-812-3479-6567',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Indonesia',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Layanan Otomasi UMKM',
+    itemListElement: services.map((service, index) => ({
+      '@type': 'Offer',
+      position: index + 1,
+      itemOffered: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description,
+        serviceType: service.serviceType,
+      },
+    })),
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

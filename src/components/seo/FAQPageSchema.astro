@@ -1,0 +1,41 @@
+---
+/**
+ * FAQPageSchema - Structured data untuk halaman FAQ
+ *
+ * Fungsi: Menampilkan FAQ di Google Search hasil pencarian (rich snippets)
+ * Benefit: User bisa lihat jawaban langsung di Google tanpa buka website
+ *
+ * Cara pakai: Import di halaman yang ada FAQ (contoh: harga.astro)
+ */
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+
+// Validasi: Pastikan ada minimal 1 FAQ
+if (!faqs || faqs.length === 0) {
+  throw new Error('FAQPageSchema memerlukan minimal 1 FAQ item');
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,86 @@
+---
+/**
+ * LocalBusinessSchema - Structured data untuk Google Local Business
+ *
+ * Fungsi: Membantu Google menampilkan informasi bisnis GoDev di hasil pencarian
+ * Benefit: Rich snippets dengan rating, alamat, jam buka, contact
+ */
+
+interface Props {
+  name?: string;
+  description?: string;
+  url?: string;
+  telephone?: string;
+  address?: {
+    streetAddress?: string;
+    addressLocality?: string;
+    addressRegion?: string;
+    postalCode?: string;
+    addressCountry?: string;
+  };
+  geo?: {
+    latitude?: number;
+    longitude?: number;
+  };
+  openingHours?: string[];
+  priceRange?: string;
+}
+
+const {
+  name = 'GoDev',
+  description = 'Jasa Done-For-You Otomasi Google Workspace untuk UMKM Indonesia. Kami bereskan catatan keuangan, stok barang, dan balasan chat usaha Anda.',
+  url = 'https://godev.biz.id',
+  telephone = '+62-812-3479-6567',
+  address = {
+    streetAddress: 'Indonesia',
+    addressLocality: 'Indonesia',
+    addressRegion: 'Indonesia',
+    postalCode: '',
+    addressCountry: 'ID',
+  },
+  geo = {
+    latitude: -6.2088,
+    longitude: 106.8456,
+  },
+  openingHours = ['Mo-Fr 09:00-17:00'],
+  priceRange = 'Rp 750.000 - Rp 1.500.000',
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': url,
+  name,
+  description,
+  url,
+  telephone,
+  priceRange,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: address.streetAddress,
+    addressLocality: address.addressLocality,
+    addressRegion: address.addressRegion,
+    postalCode: address.postalCode,
+    addressCountry: address.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: geo.latitude,
+    longitude: geo.longitude,
+  },
+  openingHoursSpecification: openingHours.map((hours) => {
+    const [days, time] = hours.split(' ');
+    const [opens, closes] = time.split('-');
+
+    return {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: days.split('-'),
+      opens,
+      closes,
+    };
+  }),
+  sameAs: ['https://wa.me/6281234796567'],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -7,6 +7,10 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+// SEO Schema Components
+import LocalBusinessSchema from '~/components/seo/LocalBusinessSchema.astro';
+import ServiceSchema from '~/components/seo/ServiceSchema.astro';
+
 const metadata = {
   title: 'GoDev - Usaha Jalan Terus, Pemilik Bisa Libur | Otomasi Google Workspace untuk UMKM',
   description:
@@ -193,4 +197,8 @@ const metadata = {
       Konsultasi pertama selalu gratis. Tidak perlu langsung berlangganan.
     </Fragment>
   </CallToAction>
+
+  <!-- SEO Schema -->
+  <LocalBusinessSchema />
+  <ServiceSchema />
 </Layout>

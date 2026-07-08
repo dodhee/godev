@@ -5,11 +5,38 @@ import Pricing from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+// SEO Schema Component
+import FAQPageSchema from '~/components/seo/FAQPageSchema.astro';
+
 const metadata = {
   title: 'Harga & Paket Otomasi Usaha - GoDev',
   description:
     'Pilih paket otomasi Google Workspace yang sesuai dengan tahap usaha Anda. Harga pasti, tidak ada biaya tersembunyi. Mulai dari Rp 750.000.',
 };
+
+// FAQ data untuk SEO Schema (plain text tanpa HTML)
+const faqSchemaData = [
+  {
+    question: 'Apakah ada biaya bulanan selain jasa pembuatan?',
+    answer:
+      'Jasa pembuatan adalah biaya sekali bayar. Namun, untuk sistem "Terima Beres" yang aman dan profesional, Anda memerlukan akun server cloud (Google Workspace) dengan biaya sekitar Rp 15.000 - Rp 20.000 per hari. Ini ditagih langsung oleh Google atau melalui kami untuk perpanjangan. Ini adalah standar keamanan data usaha Anda agar tidak hilang atau bocor.',
+  },
+  {
+    question: 'Berapa lama proses pembuatannya?',
+    answer:
+      'Rata-rata 7-14 hari kerja tergantung kompleksitas. Paket Rapi biasanya selesai dalam 5 hari kerja. Kami akan update progres lewat WhatsApp setiap hari.',
+  },
+  {
+    question: 'Kalau saya tidak paham IT, bisa pakai tidak?',
+    answer:
+      'Justru itulah tujuan kami. Sistem dirancang untuk orang awam. Kami latih sampai Anda dan tim bisa pakai sendiri. Kalau ada yang lupa, tinggal tanya kami via WhatsApp. Tidak ada pertanyaan bodoh.',
+  },
+  {
+    question: 'Apakah bisa request fitur khusus?',
+    answer:
+      'Bisa. Kami akan diskusikan dulu kebutuhan spesifik usaha Anda saat konsultasi gratis. Nanti kami beri tahu apakah masuk dalam paket standar atau perlu penyesuaian harga. Transparansi adalah prioritas kami.',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -146,4 +173,7 @@ const metadata = {
       Konsultasi gratis, tidak ada paksaan untuk langsung beli.
     </Fragment>
   </CallToAction>
+
+  <!-- SEO Schema -->
+  <FAQPageSchema faqs={faqSchemaData} />
 </Layout>

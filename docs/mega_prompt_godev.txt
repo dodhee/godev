@@ -214,6 +214,7 @@ Buat `src/components/LocalBusinessSchema.astro` (JSON-LD untuk SEO lokal).
 Buat `src/components/ServiceSchema.astro` (JSON-LD untuk jasa).
 Buat `src/components/FAQPageSchema.astro` (JSON-LD untuk FAQ, gunakan di halaman harga).
 Install `@astrojs/sitemap`, buat `public/robots.txt`.
+Tambahkan 7 blog post untuk optimasi SEO
 Gunakan `<Image>` dari `astro:assets` untuk semua gambar studi kasus.
 TUGAS: Berikan semua komponen schema JSON-LD dan konfigurasi sitemap. BERHENTI dan tanya saya.
 GIT REMINDER: "Jangan lupa commit & push perubahan Fase 6. Saran commit message: `feat(godev): tambah SEO schema JSON-LD dan sitemap`"

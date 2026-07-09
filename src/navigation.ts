@@ -79,8 +79,9 @@ export const footerData = {
   secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: 'https://wa.me/6281234796567' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    // Instagram & Facebook: Akan diaktifkan setelah akun social media ready
+    // { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://instagram.com/godev.id' },
+    // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://facebook.com/godev.id' },
   ],
   footNote: `
     <p class="text-sm text-muted">

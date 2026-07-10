@@ -2,7 +2,7 @@
 import { ANALYTICS } from 'astrowind:config';
 
 const id = ANALYTICS?.vendors?.googleAnalytics?.id ? String(ANALYTICS.vendors.googleAnalytics.id) : '';
-const partytown = !!ANALYTICS?.vendors?.googleAnalytics?.partytown;
+const partytown = false; // Force disable partytown for reliability
 const scriptType = partytown ? 'text/partytown' : undefined;
 ---
 

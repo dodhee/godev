@@ -1,0 +1,14 @@
+﻿<!-- Background gradients untuk enhance glass effect -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <!-- Top area gradients - DIPERKUAT -->
+    <div class="absolute -top-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-godev-primary/35 via-godev-primary/15 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/30 via-blue-500/12 to-transparent blur-3xl rounded-full"></div>
+    
+    <!-- Middle area gradients - DITAMBAH -->
+    <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-purple-500/25 via-purple-500/10 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute top-1/2 left-1/4 w-[450px] h-[450px] bg-gradient-to-tl from-godev-accent/30 via-godev-accent/12 to-transparent blur-3xl rounded-full"></div>
+    
+    <!-- Bottom area gradients - DIPERKUAT -->
+    <div class="absolute bottom-1/4 left-1/3 w-[600px] h-[600px] bg-gradient-to-tr from-godev-accent/35 via-godev-accent/15 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute -bottom-40 -right-40 w-[650px] h-[650px] bg-gradient-to-tl from-godev-primary/30 via-godev-primary/12 to-transparent blur-3xl rounded-full"></div>
+  </div>

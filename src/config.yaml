@@ -60,7 +60,8 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null
-
+      id: 'G-G0NEG69QSL'
+      partytown: true
+      
 ui:
   theme: 'system'

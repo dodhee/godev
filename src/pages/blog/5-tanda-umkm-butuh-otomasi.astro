@@ -1,0 +1,105 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: '5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat) | GoDev Blog',
+  description: 'Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.',
+};
+---
+
+<Layout metadata={metadata}>
+  <article class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-4xl">
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center gap-3 mb-4 text-sm text-muted">
+        <a href="/blog" class="hover:text-godev-primary">Blog</a>
+        <span>•</span>
+        <span class="glass-badge">
+          Otomasi Bisnis
+        </span>
+        <span>•</span>
+        <time datetime="2026-07-01">1 Juli 2026</time>
+        <span>•</span>
+        <span>8 menit</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat)
+      </h1>
+      <p class="text-xl text-muted">
+        Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <p>
+        Banyak pemilik UMKM baru sadar butuh sistem otomasi setelah kehilangan pelanggan atau mengalami kerugian finansial. Padahal, ada tanda-tanda jelas yang muncul jauh sebelum itu terjadi.
+      </p>
+
+      <h2>1. Admin Sering Lembur, Tapi Kerjaan Tidak Selesai</h2>
+      <p>
+        Jika tim admin Anda lembur hampir setiap hari hanya untuk menyelesaikan pekerjaan rutin seperti input data, balas chat pelanggan, atau bikin laporan, ini tanda bahwa sistem manual sudah tidak efisien lagi.
+      </p>
+      <p><strong>Dampak:</strong> Burnout karyawan, tingkat kesalahan tinggi, biaya operasional membengkak.</p>
+      <p><strong>Solusi:</strong> Otomasi input data dengan form digital yang langsung masuk ke database. Gunakan auto-reply untuk pertanyaan umum pelanggan.</p>
+
+      <h2>2. Sering Ada Selisih Stok atau Uang Kas</h2>
+      <p>
+        Setiap kali stok opname atau rekonsiliasi kas, selalu ada selisih yang tidak bisa dijelaskan. Uang hilang entah ke mana, barang tiba-tiba kurang tanpa ada catatan penjualan.
+      </p>
+      <p><strong>Dampak:</strong> Kerugian finansial, sulit mendeteksi kebocoran atau fraud, kepercayaan ke tim menurun.</p>
+      <p><strong>Solusi:</strong> Sistem pencatatan real-time yang mencatat setiap transaksi otomatis. Setiap barang keluar atau uang masuk langsung tercatat dengan timestamp dan user.</p>
+
+      <h2>3. Pelanggan Komplain Respons Lambat</h2>
+      <p>
+        Chat pelanggan menumpuk di WhatsApp, email tidak terbalas sampai berhari-hari. Pelanggan mulai komplain atau bahkan kabur ke kompetitor yang lebih responsif.
+      </p>
+      <p><strong>Dampak:</strong> Kehilangan pelanggan potensial, review negatif, reputasi bisnis turun.</p>
+      <p><strong>Solusi:</strong> Sistem chatbot untuk pertanyaan umum, notifikasi otomatis untuk chat yang belum dibalas lebih dari X jam, prioritas inbox untuk pertanyaan penting.</p>
+
+      <h2>4. Laporan Keuangan Baru Bisa Dibuat Akhir Bulan</h2>
+      <p>
+        Anda sebagai pemilik baru bisa tahu kondisi keuangan usaha di akhir bulan, itupun setelah admin menghitung manual selama berhari-hari. Ini artinya Anda mengambil keputusan bisnis tanpa data real-time.
+      </p>
+      <p><strong>Dampak:</strong> Keputusan bisnis terlambat, sulit mengidentifikasi masalah cash flow sebelum terlambat, planning tidak akurat.</p>
+      <p><strong>Solusi:</strong> Dashboard real-time yang menampilkan omzet, pengeluaran, dan profit harian. Laporan otomatis dikirim via WhatsApp atau email setiap pagi.</p>
+
+      <h2>5. Takut Karyawan Resign Karena Semua Sistemnya di Kepala Mereka</h2>
+      <p>
+        Jika satu orang resign, usaha Anda chaos karena hanya dia yang tahu cara kerja sistemnya. Tidak ada dokumentasi, tidak ada SOP, semua di kepala karyawan.
+      </p>
+      <p><strong>Dampak:</strong> Ketergantungan tinggi pada individu, sulit scale up bisnis, proses onboarding karyawan baru lama dan ribet.</p>
+      <p><strong>Solusi:</strong> Sistem terdokumentasi dengan baik, akses berbasis role (setiap orang punya akses sesuai posisinya), training materials yang bisa diakses kapan saja.</p>
+
+      <h2>Kesimpulan: Jangan Tunggu Sampai Terlambat</h2>
+      <p>
+        Jika Anda mengalami 3 atau lebih dari tanda-tanda di atas, artinya sistem manual sudah mulai menghambat pertumbuhan bisnis Anda. Semakin lama ditunda, semakin besar risiko kehilangan pelanggan dan omzet.
+      </p>
+      <p>
+        Kabar baiknya, Anda tidak perlu langsung implementasi sistem besar-besaran. Mulai dari area yang paling urgent, misalnya pencatatan keuangan otomatis atau sistem booking pelanggan.
+      </p>
+
+      <div class="not-prose mt-12 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white">
+        <h3 class="text-2xl font-bold mb-3">Mau Diskusi Sistem Otomasi untuk Usaha Anda?</h3>
+        <p class="mb-6">
+          Konsultasi pertama gratis. Kami bantu analisis mana yang paling urgent untuk usaha Anda.
+        </p>
+        <a
+          href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20baca%20artikel%20tentang%205%20tanda%20butuh%20otomasi.%20Saya%20mau%20konsultasi."
+          class="inline-block px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Konsultasi Gratis via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Back to Blog -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <a href="/blog" class="inline-flex items-center text-godev-primary font-semibold hover:underline">
+        ← Kembali ke Blog
+      </a>
+    </div>
+  </article>
+</Layout>

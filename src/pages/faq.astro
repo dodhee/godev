@@ -40,7 +40,7 @@ const categoryIcons = {
     </div>
 
     <!-- Quick Navigation -->
-    <div class="mb-12 p-6 bg-gray-50 dark:bg-slate-900 rounded-lg">
+    <div class="glass-card-md mb-12 p-6">
       <h2 class="text-lg font-bold mb-4">Navigasi Cepat:</h2>
       <div class="flex flex-wrap gap-3">
         {Object.keys(faqByCategory).map((category) => (
@@ -65,7 +65,7 @@ const categoryIcons = {
 
         <div class="space-y-6">
           {items.map((item, index) => (
-            <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="glass-card-md p-6">
               <h3 class="text-lg font-bold mb-3 flex items-start">
                 <span class="shrink-0 w-8 h-8 rounded-full bg-godev-primary text-white flex items-center justify-center text-sm font-bold mr-3">
                   {index + 1}
@@ -107,7 +107,7 @@ const categoryIcons = {
 
     <!-- Related Links -->
     <div class="mt-12 grid md:grid-cols-3 gap-6">
-      <a href="/harga" class="p-6 bg-gray-50 dark:bg-slate-900 rounded-lg hover:shadow-lg transition text-center">
+      <a href="/harga" class="glass-card-md p-6 hover:shadow-lg transition text-center">
         <Icon name="tabler:currency-dollar" class="w-12 h-12 mx-auto mb-3 text-godev-primary" />
         <h3 class="font-bold mb-2">Lihat Paket & Harga</h3>
         <p class="text-sm text-muted">Mulai dari Rp 750.000</p>

@@ -1,0 +1,153 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding) | GoDev Blog',
+  description: 'Tutorial lengkap membuat buku kas otomatis yang mencatat transaksi, kirim laporan harian via WhatsApp, dan bisa diakses dari mana saja. Gratis!',
+};
+---
+
+<Layout metadata={metadata}>
+  <article class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-4xl">
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex items-center gap-3 mb-4 text-sm text-muted">
+        <a href="/blog" class="hover:text-godev-primary">Blog</a>
+        <span>•</span>
+        <span class="glass-badge">
+          Tutorial
+        </span>
+        <span>•</span>
+        <time datetime="2026-07-02">2 Juli 2026</time>
+        <span>•</span>
+        <span>12 menit</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)
+      </h1>
+      <p class="text-xl text-muted">
+        Tutorial lengkap membuat buku kas otomatis yang mencatat transaksi, kirim laporan harian via WhatsApp, dan bisa diakses dari mana saja. Gratis!
+      </p>
+    </header>
+
+    <!-- Content -->
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 mb-8">
+        <p class="font-semibold mb-2">⚡ Yang Anda Butuhkan:</p>
+        <ul class="mb-0">
+          <li>Akun Google (Gmail)</li>
+          <li>30 menit waktu setup</li>
+          <li>Smartphone untuk akses mobile</li>
+        </ul>
+      </div>
+
+      <h2>Mengapa Google Sheets untuk Buku Kas?</h2>
+      <p>
+        Banyak UMKM masih pakai buku tulis atau Excel offline. Masalahnya, data tidak bisa diakses dari mana saja, tidak ada backup otomatis, dan tidak bisa kolaborasi dengan tim.
+      </p>
+      <p>
+        Google Sheets menyelesaikan semua masalah itu, plus gratis dan mudah digunakan.
+      </p>
+
+      <h2>Langkah 1: Buat Template Buku Kas</h2>
+      <p>
+        Buka Google Sheets dan buat spreadsheet baru dengan struktur ini:
+      </p>
+      <ul>
+        <li><strong>Kolom A:</strong> Tanggal</li>
+        <li><strong>Kolom B:</strong> Keterangan</li>
+        <li><strong>Kolom C:</strong> Kategori (Pemasukan/Pengeluaran)</li>
+        <li><strong>Kolom D:</strong> Nominal</li>
+        <li><strong>Kolom E:</strong> Saldo</li>
+        <li><strong>Kolom F:</strong> Dicatat oleh (nama admin)</li>
+      </ul>
+
+      <h2>Langkah 2: Buat Formula Otomatis</h2>
+      <p>
+        Di kolom E (Saldo), masukkan formula ini untuk menghitung saldo otomatis:
+      </p>
+      <pre><code>=IF(C2="Pemasukan", E1+D2, E1-D2)</code></pre>
+      <p>
+        Formula ini akan otomatis menambah atau mengurangi saldo berdasarkan kategori transaksi.
+      </p>
+
+      <h2>Langkah 3: Buat Form Input Mobile-Friendly</h2>
+      <p>
+        Klik <strong>Tools → Create a new form</strong>. Buat form dengan field:
+      </p>
+      <ul>
+        <li>Keterangan (Short answer)</li>
+        <li>Kategori (Multiple choice: Pemasukan/Pengeluaran)</li>
+        <li>Nominal (Number)</li>
+        <li>Dicatat oleh (Short answer)</li>
+      </ul>
+      <p>
+        Setelah submit, data otomatis masuk ke Google Sheets. Admin tinggal buka link form di HP, isi, submit. Selesai!
+      </p>
+
+      <h2>Langkah 4: Setup Laporan Harian Otomatis (Opsional)</h2>
+      <p>
+        Untuk mengirim laporan harian via email atau WhatsApp, Anda perlu:
+      </p>
+      <ol>
+        <li>Klik <strong>Extensions → Apps Script</strong></li>
+        <li>Copy script sederhana untuk kirim laporan (bisa minta template ke kami)</li>
+        <li>Set trigger otomatis setiap jam 6 pagi</li>
+      </ol>
+      <p>
+        Setiap pagi, Anda akan terima ringkasan transaksi kemarin: total pemasukan, pengeluaran, dan saldo akhir.
+      </p>
+
+      <h2>Langkah 5: Proteksi Data dengan Permission Management</h2>
+      <p>
+        Klik <strong>Share</strong> di pojok kanan atas, atur permission:
+      </p>
+      <ul>
+        <li><strong>Pemilik:</strong> Can edit (full access)</li>
+        <li><strong>Admin:</strong> Can edit (bisa input data)</li>
+        <li><strong>Staff lain:</strong> Can view (hanya bisa lihat, tidak bisa edit)</li>
+      </ul>
+
+      <h2>Tips Pro:</h2>
+      <ul>
+        <li><strong>Backup otomatis:</strong> Google Sheets sudah auto-save dan ada version history.</li>
+        <li><strong>Akses offline:</strong> Install Google Sheets app di HP, aktifkan offline mode.</li>
+        <li><strong>Integrasi WhatsApp:</strong> Gunakan Google Apps Script untuk kirim notifikasi ke WhatsApp (butuh setup lanjutan).</li>
+      </ul>
+
+      <h2>Kesimpulan</h2>
+      <p>
+        Dengan Google Sheets, Anda punya buku kas digital yang:
+      </p>
+      <ul>
+        <li>✅ Bisa diakses dari mana saja</li>
+        <li>✅ Otomatis hitung saldo</li>
+        <li>✅ Multi-user (admin bisa input bareng-bareng)</li>
+        <li>✅ Gratis selamanya</li>
+        <li>✅ Aman dengan backup cloud</li>
+      </ul>
+
+      <div class="not-prose mt-12 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white">
+        <h3 class="text-2xl font-bold mb-3">Butuh Bantuan Setup Sistem Buku Kas?</h3>
+        <p class="mb-6">
+          Kami bantu setup sistem buku kas yang lebih advanced: integrasi WhatsApp, dashboard visual, multi-toko, dan fitur lainnya.
+        </p>
+        <a
+          href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20baca%20tutorial%20buku%20kas%20Google%20Sheets.%20Saya%20mau%20bantuan%20setup."
+          class="inline-block px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Konsultasi Gratis via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Back to Blog -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <a href="/blog" class="inline-flex items-center text-godev-primary font-semibold hover:underline">
+        ← Kembali ke Blog
+      </a>
+    </div>
+  </article>
+</Layout>

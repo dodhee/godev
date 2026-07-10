@@ -16,6 +16,14 @@ const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
+  <!-- Background gradients untuk enhance glass effect di semua halaman -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-40 -right-40 w-175 h-175 bg-linear-to-br from-godev-primary/25 via-godev-primary/10 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute top-1/4 -left-20 w-150 h-150 bg-linear-to-br from-blue-500/20 via-blue-500/8 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-150 h-150 bg-linear-to-tr from-godev-accent/25 via-godev-accent/10 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute -bottom-40 -right-40 w-162.5 h-162.5 bg-linear-to-tl from-godev-primary/20 via-godev-primary/8 to-transparent blur-3xl rounded-full"></div>
+  </div>
+  
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>

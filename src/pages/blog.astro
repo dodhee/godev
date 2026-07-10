@@ -69,13 +69,13 @@ const blogPosts = [
       <button class="px-4 py-2 rounded-full bg-godev-primary text-white font-semibold text-sm">
         Semua Artikel
       </button>
-      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Tutorial
       </button>
-      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Tips Bisnis
       </button>
-      <button class="px-4 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Perbandingan
       </button>
     </div>
@@ -83,11 +83,11 @@ const blogPosts = [
     <!-- Blog Posts Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {blogPosts.map((post) => (
-        <article class="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <article class="glass-card-md glass-shimmer overflow-hidden">
           <div class="h-48 bg-linear-to-br from-godev-primary to-godev-accent"></div>
           <div class="p-6">
             <div class="flex items-center gap-3 mb-3 text-sm text-muted">
-              <span class="px-3 py-1 bg-godev-primary/10 text-godev-primary rounded-full font-semibold">
+              <span class="glass-badge">
                 {post.category}
               </span>
               <span>{post.date}</span>

@@ -18,17 +18,17 @@ const metadata = {
       <h1 class="text-4xl font-bold text-center mb-12">Test Glassmorphism Effects</h1>
 
       <!-- Test 1: Glass Card -->
-      <div class="glass-card p-8">
-        <h2 class="text-2xl font-bold mb-4">Glass Card</h2>
-        <p class="text-muted">Ini adalah glass card dengan backdrop blur. Jika terlihat semi-transparent dengan blur effect, berarti berhasil.</p>
+      <div class="glass-card p-8" style="background: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(10px) !important;">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Glass Card</h2>
+        <p class="text-gray-700 dark:text-gray-200">Ini adalah glass card dengan backdrop blur. Jika terlihat semi-transparent dengan blur effect, berarti berhasil.</p>
         <div class="mt-4 p-4 bg-godev-primary/10 rounded">
-          <p class="text-sm">Background di belakang harus terlihat blur melalui card ini.</p>
+          <p class="text-sm text-gray-800 dark:text-gray-100">Background di belakang harus terlihat blur melalui card ini.</p>
         </div>
       </div>
 
       <!-- Test 2: Glass Input -->
       <div class="glass-card p-8">
-        <h2 class="text-2xl font-bold mb-4">Glass Input</h2>
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Glass Input</h2>
         <input 
           type="text" 
           placeholder="Test input dengan glass effect" 
@@ -43,7 +43,7 @@ const metadata = {
 
       <!-- Test 3: Glass Button -->
       <div class="glass-card p-8">
-        <h2 class="text-2xl font-bold mb-4">Glass Button</h2>
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Glass Button</h2>
         <button class="glass-button px-8 py-4 rounded-lg text-white font-semibold">
           Click Me - Glass Button
         </button>
@@ -52,29 +52,29 @@ const metadata = {
       <!-- Test 4: Multiple Cards -->
       <div class="grid md:grid-cols-3 gap-6">
         <div class="glass-card p-6">
-          <h3 class="font-bold mb-2">Card 1</h3>
-          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Card 1</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-200">Hover untuk lihat lift effect</p>
         </div>
         <div class="glass-card p-6">
-          <h3 class="font-bold mb-2">Card 2</h3>
-          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Card 2</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-200">Hover untuk lihat lift effect</p>
         </div>
         <div class="glass-card p-6">
-          <h3 class="font-bold mb-2">Card 3</h3>
-          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Card 3</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-200">Hover untuk lihat lift effect</p>
         </div>
       </div>
 
       <!-- Test 5: Inline Style Comparison -->
       <div class="grid md:grid-cols-2 gap-6">
         <div>
-          <h3 class="font-bold mb-2">Dengan Glass Class</h3>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Dengan Glass Class</h3>
           <div class="glass-card p-6">
-            <p>Ini menggunakan .glass-card class</p>
+            <p class="text-gray-800 dark:text-gray-100">Ini menggunakan .glass-card class</p>
           </div>
         </div>
         <div>
-          <h3 class="font-bold mb-2">Inline Style (Fallback)</h3>
+          <h3 class="font-bold mb-2 text-gray-900 dark:text-white">Inline Style (Fallback)</h3>
           <div style="
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -84,14 +84,14 @@ const metadata = {
             border-radius: 12px;
             padding: 1.5rem;
           ">
-            <p>Ini menggunakan inline style</p>
+            <p class="text-gray-800 dark:text-gray-100">Ini menggunakan inline style</p>
           </div>
         </div>
       </div>
 
       <!-- Debug Info -->
       <div class="glass-card p-8 mt-12">
-        <h2 class="text-2xl font-bold mb-4">Debug Info</h2>
+        <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Debug Info</h2>
         <div class="space-y-2 text-sm font-mono">
           <p>✅ Jika semua card terlihat semi-transparent = SUCCESS</p>
           <p>✅ Jika background gradient terlihat blur melalui card = SUCCESS</p>

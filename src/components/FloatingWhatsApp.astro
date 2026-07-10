@@ -11,7 +11,11 @@
  */
 
 const whatsappNumber = '6281234796567';
-const defaultMessage = 'Halo GoDev, saya tertarik konsultasi tentang otomasi usaha saya.';
+const defaultMessage = `Halo GoDev, saya mau konsultasi otomasi usaha.
+
+Nama usaha: [isi nama usaha]
+Masalah utama: [ceritakan masalah]
+Budget disiapkan: [Rp ...]`;
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`;
 ---
 

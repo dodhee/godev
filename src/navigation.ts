@@ -35,7 +35,7 @@ export const headerData = {
   actions: [
     {
       text: 'Konsultasi Gratis',
-      href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20konsultasi%20gratis%20tentang%20otomatisasi%20usaha%20saya.',
+      href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20konsultasi%20otomasi%20usaha.%0A%0ANama%20usaha%3A%20%5Bisi%20nama%20usaha%5D%0AMasalah%20utama%3A%20%5Bceritakan%20masalah%5D%0ABudget%20disiapkan%3A%20%5BRp%20...%5D',
       target: '_blank',
     },
   ],

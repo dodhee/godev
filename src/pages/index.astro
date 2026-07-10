@@ -24,18 +24,33 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+      <!-- Background gradients untuk enhance glass effect -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <!-- Top area gradients - DIPERKUAT -->
+    <div class="absolute -top-40 -right-40 w-175 h-175 bg-linear-to-br from-godev-primary/35 via-godev-primary/15 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute top-1/4 -left-20 w-150 h-150 bg-linear-to-br from-blue-500/30 via-blue-500/12 to-transparent blur-3xl rounded-full"></div>
+    
+    <!-- Middle area gradients - DITAMBAH -->
+    <div class="absolute top-1/3 right-1/4 w-125 h-125 bg-linear-to-br from-purple-500/25 via-purple-500/10 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute top-1/2 left-1/4 w-112.5 h-112.5 bg-linear-to-tl from-godev-accent/30 via-godev-accent/12 to-transparent blur-3xl rounded-full"></div>
+    
+    <!-- Bottom area gradients - DIPERKUAT -->
+    <div class="absolute bottom-1/4 left-1/3 w-150 h-150 bg-linear-to-tr from-godev-accent/35 via-godev-accent/15 to-transparent blur-3xl rounded-full"></div>
+    <div class="absolute -bottom-40 -right-40 w-162.5 h-162.5 bg-linear-to-tl from-godev-primary/30 via-godev-primary/12 to-transparent blur-3xl rounded-full"></div>
+  </div>
+	
   <!-- Hero Section ******************* -->
   <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Konsultasi Gratis',
-        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20konsultasi%20gratis%20tentang%20otomatisasi%20usaha%20saya.',
-        target: '_blank',
-        icon: 'tabler:brand-whatsapp',
-      },
-    ]}
-  >
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Konsultasi Gratis',
+          href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20konsultasi%20otomasi%20usaha.%0A%0ANama%20usaha%3A%20%5Bisi%20nama%20usaha%5D%0AMasalah%20utama%3A%20%5Bceritakan%20masalah%5D%0ABudget%20disiapkan%3A%20%5BRp%20...%5D',
+          target: '_blank',
+          icon: 'tabler:brand-whatsapp',
+        },
+      ]}
+    >
     <Fragment slot="title">
       Usaha Jalan Terus, <br class="hidden sm:inline" />
       <span class="text-godev-primary dark:text-godev-primary">Pemilik Bisa Libur.</span>
@@ -75,35 +90,54 @@ const metadata = {
     ]}
   />
 
-  <!-- Solution Section ************** -->
-  <Features2
-    title="Solusi Otomatis, Usaha Jalan Terus"
-    subtitle="Kami buat sistem yang bekerja untuk Anda, bukan sebaliknya."
-    items={[
-      {
-        title: 'Buku Kas Otomatis',
-        description:
-          'Setiap transaksi masuk langsung tercatat rapi. Laporan harian muncul sendiri di HP. Tidak ada lagi uang bocor.',
-        icon: 'tabler:cash',
-      },
-      {
-        title: 'Kontrol Stok Real-time',
-        description:
-          'Pantau barang yang menipis langsung dari HP, kapan saja. Notifikasi otomatis saat stok hampir habis.',
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Sistem Booking/Order',
-        description:
-          'Pelanggan pesan sendiri lewat link. Admin tinggal terima beres. Tidak ada lagi chat yang kelewatan.',
-        icon: 'tabler:device-mobile',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-godev-primary/5 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
+    <!-- Solution Section ************** -->
+      <section id="solusi" class="relative scroll-mt-[72px] not-prose">
+        <div class="absolute inset-0 pointer-events-none -z-[1] bg-godev-primary/5 dark:bg-godev-primary/10" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20">
+          <!-- Headline -->
+          <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+              Solusi Otomatis, Usaha Jalan Terus
+            </h2>
+            <p class="text-xl text-muted">
+              Kami buat sistem yang bekerja untuk Anda, bukan sebaliknya.
+            </p>
+          </div>
+
+          <!-- Grid Cards -->
+          <div class="grid gap-4 md:gap-6 gap-x-12 lg:grid-cols-3 sm:grid-cols-2">
+            <div class="glass-card-md glass-floating relative flex flex-col p-6">
+              <svg class="mb-6 w-12 h-12 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M6 12h.01M18 12h.01"></path>
+              </svg>
+              <div class="text-xl font-bold">Buku Kas Otomatis</div>
+              <p class="text-muted mt-2">Setiap transaksi masuk, langsung tercatat rapi. Tidak ada lagi uang bocor.</p>
+            </div>
+
+            <div class="glass-card-md glass-floating relative flex flex-col p-6">
+              <svg class="mb-6 w-12 h-12 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 16v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
+                <rect width="12" height="12" x="8" y="2" rx="2"></rect>
+              </svg>
+              <div class="text-xl font-bold">Kontrol Stok Real-time</div>
+              <p class="text-muted mt-2">Pantau barang yang menipis langsung dari HP, kapan saja.</p>
+            </div>
+
+            <div class="glass-card-md glass-floating relative flex flex-col p-6">
+              <svg class="mb-6 w-12 h-12 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="7" height="12" x="2" y="6" rx="1"></rect>
+                <path d="M13 8.32a7.43 7.43 0 0 1 0 7.36"></path>
+                <path d="M16.46 6.21a11.76 11.76 0 0 1 0 11.58"></path>
+                <path d="M19.91 4.1a15.91 15.91 0 0 1 .01 15.8"></path>
+              </svg>
+              <div class="text-xl font-bold">Sistem Booking/Order</div>
+              <p class="text-muted mt-2">Pelanggan pesan sendiri, admin tinggal terima beres.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
   <!-- How It Works Section ********** -->
   <Steps
@@ -200,7 +234,7 @@ const metadata = {
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 mb-8">
-      <a href="/blog/5-tanda-umkm-butuh-otomasi" class="glass-card overflow-hidden block">
+      <a href="/blog/5-tanda-umkm-butuh-otomasi" class="glass-card glass-shimmer overflow-hidden block">
         <div class="h-48 bg-linear-to-br from-godev-primary to-godev-accent"></div>
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
@@ -212,7 +246,7 @@ const metadata = {
         </div>
       </a>
 
-      <a href="/blog/cara-otomasi-buku-kas-google-sheets" class="glass-card overflow-hidden block">
+      <a href="/blog/cara-otomasi-buku-kas-google-sheets" class="glass-card glass-shimmer overflow-hidden block">
         <div class="h-48 bg-linear-to-br from-blue-500 to-blue-700"></div>
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
@@ -224,7 +258,7 @@ const metadata = {
         </div>
       </a>
 
-      <a href="/blog/roi-investasi-sistem-otomasi" class="glass-card overflow-hidden block">
+      <a href="/blog/roi-investasi-sistem-otomasi" class="glass-card glass-shimmer overflow-hidden block">
         <div class="h-48 bg-linear-to-br from-green-500 to-green-700"></div>
         <div class="p-6">
           <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
@@ -244,13 +278,47 @@ const metadata = {
     </div>
   </section>
 
+    <!-- Qualifier Section (Soft) ******* -->
+  <section class="px-4 py-12 sm:px-6 mx-auto max-w-4xl">
+    <div class="glass-card-md p-8 text-center">
+      <h3 class="text-2xl font-bold mb-4">Siapa yang Cocok dengan GoDev?</h3>
+      <div class="grid md:grid-cols-2 gap-6 text-left mt-8">
+        <div>
+          <h4 class="font-bold text-godev-primary mb-3 flex items-center">
+            <span class="text-2xl mr-2">✅</span> Cocok untuk Anda jika:
+          </h4>
+          <ul class="space-y-2 text-muted">
+            <li>• Serius mau rapikan sistem usaha</li>
+            <li>• Punya budget minimal Rp 750.000</li>
+            <li>• Siap implement dalam 1-2 minggu</li>
+            <li>• Mau latihan pakai sistem baru</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-600 mb-3 flex items-center">
+            <span class="text-2xl mr-2">❌</span> Belum cocok jika:
+          </h4>
+          <ul class="space-y-2 text-muted">
+            <li>• Cuma mau tanya-tanya gratis</li>
+            <li>• Belum siap invest di sistem</li>
+            <li>• Cari software gratis selamanya</li>
+            <li>• Mau "coba dulu" tanpa komitmen</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-6 text-sm text-muted italic">
+        Kami hargai waktu Anda dan waktu kami. Konsultasi gratis untuk yang serius ingin perbaiki usahanya, bukan sekadar ngobrol.
+      </p>
+    </div>
+  </section>
+
   <!-- Final CTA ********************* -->
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Ngobrol Gratis Sekarang',
-        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20tertarik%20konsultasi%20gratis%20tentang%20otomatisasi%20usaha%20saya.',
+        text: 'Konsultasi Gratis',
+        href: 'https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20konsultasi%20otomasi%20usaha.%0A%0ANama%20usaha%3A%20%5Bisi%20nama%20usaha%5D%0AMasalah%20utama%3A%20%5Bceritakan%20masalah%5D%0ABudget%20disiapkan%3A%20%5BRp%20...%5D',
         target: '_blank',
         icon: 'tabler:brand-whatsapp',
       },

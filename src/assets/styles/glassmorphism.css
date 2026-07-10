@@ -264,8 +264,8 @@
   .glass-badge,
   .glass-input,
   .glass-floating {
-    backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     animation: none;
     transition: none;
   }

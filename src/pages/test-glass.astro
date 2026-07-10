@@ -1,0 +1,104 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Test Glassmorphism',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="py-20 px-4">
+    <!-- Background dengan warna untuk test blur -->
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-godev-primary to-godev-accent opacity-30"></div>
+      <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-tl from-blue-500 to-purple-500 opacity-30"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-8">
+      <h1 class="text-4xl font-bold text-center mb-12">Test Glassmorphism Effects</h1>
+
+      <!-- Test 1: Glass Card -->
+      <div class="glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4">Glass Card</h2>
+        <p class="text-muted">Ini adalah glass card dengan backdrop blur. Jika terlihat semi-transparent dengan blur effect, berarti berhasil.</p>
+        <div class="mt-4 p-4 bg-godev-primary/10 rounded">
+          <p class="text-sm">Background di belakang harus terlihat blur melalui card ini.</p>
+        </div>
+      </div>
+
+      <!-- Test 2: Glass Input -->
+      <div class="glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4">Glass Input</h2>
+        <input 
+          type="text" 
+          placeholder="Test input dengan glass effect" 
+          class="glass-input w-full px-4 py-3 rounded-lg"
+        />
+        <textarea 
+          placeholder="Test textarea dengan glass effect" 
+          class="glass-input w-full px-4 py-3 rounded-lg mt-4"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- Test 3: Glass Button -->
+      <div class="glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4">Glass Button</h2>
+        <button class="glass-button px-8 py-4 rounded-lg text-white font-semibold">
+          Click Me - Glass Button
+        </button>
+      </div>
+
+      <!-- Test 4: Multiple Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass-card p-6">
+          <h3 class="font-bold mb-2">Card 1</h3>
+          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="font-bold mb-2">Card 2</h3>
+          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="font-bold mb-2">Card 3</h3>
+          <p class="text-sm text-muted">Hover untuk lihat lift effect</p>
+        </div>
+      </div>
+
+      <!-- Test 5: Inline Style Comparison -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-bold mb-2">Dengan Glass Class</h3>
+          <div class="glass-card p-6">
+            <p>Ini menggunakan .glass-card class</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Inline Style (Fallback)</h3>
+          <div style="
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
+          ">
+            <p>Ini menggunakan inline style</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debug Info -->
+      <div class="glass-card p-8 mt-12">
+        <h2 class="text-2xl font-bold mb-4">Debug Info</h2>
+        <div class="space-y-2 text-sm font-mono">
+          <p>✅ Jika semua card terlihat semi-transparent = SUCCESS</p>
+          <p>✅ Jika background gradient terlihat blur melalui card = SUCCESS</p>
+          <p>✅ Jika hover card ada lift effect = SUCCESS</p>
+          <p>❌ Jika card terlihat solid (tidak transparent) = FAILED</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

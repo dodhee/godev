@@ -1,4 +1,5 @@
 ---
+import '~/assets/styles/fonts.css';
 import '~/assets/styles/tailwind.css';
 
 import { I18N } from 'astrowind:config';
@@ -36,11 +37,7 @@ const { language, textDirection } = I18N;
     <SiteVerification />
     <Analytics />
 
-    <!-- Font Optimization: Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@600;700;800&display=swap" />
+    <!-- Fonts are now self-hosted in /public/fonts/ for better performance -->
     
     <link rel="preconnect" href="https://images.unsplash.com" />
 

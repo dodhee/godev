@@ -13,7 +13,7 @@ export const analyticsConfig = {
   vendors: {
     googleAnalytics: {
       id: GOOGLE_ANALYTICS_ID,
-      partytown: true, // Load analytics script in web worker for better performance
+      partytown: false, // Disabled partytown - use standard loading for reliability
     },
   },
 };

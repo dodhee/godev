@@ -82,25 +82,34 @@ const blogPosts = [
     </div>
 
     <!-- Categories Filter -->
-    <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <button class="px-4 py-2 rounded-full bg-godev-primary text-white font-semibold text-sm">
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-buttons">
+      <button
+        data-filter="semua"
+        class="px-4 py-2 rounded-full bg-godev-primary text-white font-semibold text-sm filter-btn active"
+      >
         Semua Artikel
       </button>
-      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button data-filter="Tutorial" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Tutorial
       </button>
-      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button data-filter="Otomasi Bisnis" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Tips Bisnis
       </button>
-      <button class="glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
+      <button data-filter="Perbandingan" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
         Perbandingan
+      </button>
+      <button data-filter="Best Practices" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
+        Best Practices
+      </button>
+      <button data-filter="ROI &amp; Investasi" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
+        ROI &amp; Investasi
       </button>
     </div>
 
     <!-- Blog Posts Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
       {blogPosts.map((post) => (
-        <article class="glass-card-md glass-shimmer overflow-hidden">
+        <article class="glass-card-md glass-shimmer overflow-hidden" data-category={post.category}>
           <div class="h-48 overflow-hidden">
             <Image
               src={post.image}
@@ -153,3 +162,34 @@ const blogPosts = [
     </div>
   </section>
 </Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('#blog-grid article');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'semua';
+
+      // Update active button style
+      buttons.forEach((b) => {
+        b.classList.remove('bg-godev-primary', 'text-white', 'active');
+        b.classList.add('glass-badge');
+      });
+      btn.classList.add('bg-godev-primary', 'text-white', 'active');
+      btn.classList.remove('glass-badge');
+
+      // Show / hide cards
+      cards.forEach((card) => {
+        const category = card.dataset.category ?? '';
+        if (filter === 'semua' || category === filter) {
+          card.style.display = '';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
+</script>

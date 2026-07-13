@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '~/images/blog/roi_otomasi_sistem.jpg';
 
 const metadata = {
   title: 'ROI Investasi Sistem Otomasi: Berapa Lama Balik Modal? | GoDev Blog',
@@ -29,6 +31,17 @@ const metadata = {
         Perhitungan detail ROI sistem otomasi untuk UMKM. Berapa biaya, berapa savings, dan kapan break even? Data real dari 50+ bisnis.
       </p>
     </header>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-xl overflow-hidden">
+      <Image
+        src={heroImage}
+        alt="Perhitungan ROI investasi sistem otomasi untuk UMKM"
+        width={896}
+        height={400}
+        class="w-full object-cover"
+      />
+    </div>
 
     <!-- Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none">

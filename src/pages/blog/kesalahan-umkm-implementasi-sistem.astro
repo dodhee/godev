@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '~/images/blog/kesalahan_umkm_implementasi_sistem.jpg';
 
 const metadata = {
   title: '7 Kesalahan Fatal UMKM Saat Implementasi Sistem Otomasi | GoDev Blog',
@@ -29,6 +31,17 @@ const metadata = {
         Banyak UMKM gagal implementasi sistem otomasi karena kesalahan klasik ini. Pelajari dari pengalaman 50+ UMKM agar Anda tidak mengulang kesalahan yang sama.
       </p>
     </header>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-xl overflow-hidden">
+      <Image
+        src={heroImage}
+        alt="7 kesalahan fatal UMKM saat implementasi sistem otomasi"
+        width={896}
+        height={400}
+        class="w-full object-cover"
+      />
+    </div>
 
     <!-- Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none">

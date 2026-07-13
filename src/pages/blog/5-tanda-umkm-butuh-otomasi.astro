@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '~/images/blog/5_tanda_umkm_butuh_otomasi.jpg';
 
 const metadata = {
   title: '5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat) | GoDev Blog',
@@ -29,6 +31,17 @@ const metadata = {
         Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.
       </p>
     </header>
+
+    <!-- Hero Image -->
+    <div class="mb-12 rounded-xl overflow-hidden">
+      <Image
+        src={heroImage}
+        alt="Ilustrasi UMKM yang membutuhkan sistem otomasi"
+        width={896}
+        height={400}
+        class="w-full object-cover"
+      />
+    </div>
 
     <!-- Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none">

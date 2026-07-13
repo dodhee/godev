@@ -1,6 +1,13 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import img5Tanda from '~/images/blog/5_tanda_umkm_butuh_otomasi.jpg';
+import imgBukuKas from '~/images/blog/cara_otomasi_buku_kas.jpg';
+import imgGoogleVsExcel from '~/images/blog/google_space_vs_excel_bagi_umkm.jpg';
+import imgKesalahan from '~/images/blog/kesalahan_umkm_implementasi_sistem.jpg';
+import imgRoi from '~/images/blog/roi_otomasi_sistem.jpg';
 
 const metadata = {
   title: 'Blog: Tips Otomasi Bisnis untuk UMKM Indonesia | GoDev',
@@ -14,7 +21,9 @@ const blogPosts = [
     description: 'Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.',
     date: '2026-07-01',
     category: 'Otomasi Bisnis',
-    readTime: '8 menit'
+    readTime: '8 menit',
+    image: img5Tanda,
+    imageAlt: 'Ilustrasi UMKM yang membutuhkan sistem otomasi'
   },
   {
     title: 'Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)',
@@ -22,7 +31,9 @@ const blogPosts = [
     description: 'Tutorial lengkap membuat buku kas otomatis yang mencatat transaksi, kirim laporan harian via WhatsApp, dan bisa diakses dari mana saja. Gratis!',
     date: '2026-07-02',
     category: 'Tutorial',
-    readTime: '12 menit'
+    readTime: '12 menit',
+    image: imgBukuKas,
+    imageAlt: 'Tutorial otomasi buku kas dengan Google Sheets'
   },
   {
     title: 'Google Workspace vs Excel: Mana yang Lebih Cocok untuk UMKM?',
@@ -30,7 +41,9 @@ const blogPosts = [
     description: 'Perbandingan lengkap Google Workspace dan Excel untuk kebutuhan UMKM. Mana yang lebih hemat, praktis, dan scalable untuk bisnis Anda?',
     date: '2026-07-03',
     category: 'Perbandingan',
-    readTime: '10 menit'
+    readTime: '10 menit',
+    image: imgGoogleVsExcel,
+    imageAlt: 'Perbandingan Google Workspace vs Excel untuk UMKM'
   },
   {
     title: '7 Kesalahan Fatal UMKM Saat Implementasi Sistem Otomasi',
@@ -38,7 +51,9 @@ const blogPosts = [
     description: 'Banyak UMKM gagal implementasi sistem otomasi karena kesalahan klasik ini. Pelajari dari pengalaman 50+ UMKM agar Anda tidak mengulang kesalahan yang sama.',
     date: '2026-07-04',
     category: 'Best Practices',
-    readTime: '15 menit'
+    readTime: '15 menit',
+    image: imgKesalahan,
+    imageAlt: '7 kesalahan fatal UMKM saat implementasi sistem otomasi'
   },
   {
     title: 'ROI Investasi Sistem Otomasi: Berapa Lama Balik Modal?',
@@ -46,7 +61,9 @@ const blogPosts = [
     description: 'Perhitungan detail ROI sistem otomasi untuk UMKM. Berapa biaya, berapa savings, dan kapan break even? Data real dari 50+ bisnis.',
     date: '2026-07-05',
     category: 'ROI & Investasi',
-    readTime: '14 menit'
+    readTime: '14 menit',
+    image: imgRoi,
+    imageAlt: 'Perhitungan ROI investasi sistem otomasi UMKM'
   },
 ];
 ---
@@ -84,7 +101,15 @@ const blogPosts = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {blogPosts.map((post) => (
         <article class="glass-card-md glass-shimmer overflow-hidden">
-          <div class="h-48 bg-linear-to-br from-godev-primary to-godev-accent"></div>
+          <div class="h-48 overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.imageAlt}
+              width={600}
+              height={192}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
           <div class="p-6">
             <div class="flex items-center gap-3 mb-3 text-sm text-muted">
               <span class="glass-badge">

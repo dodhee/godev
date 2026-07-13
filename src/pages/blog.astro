@@ -85,7 +85,7 @@ const blogPosts = [
     <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-buttons">
       <button
         data-filter="semua"
-        class="px-4 py-2 rounded-full bg-godev-primary text-white font-semibold text-sm filter-btn active"
+        class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700"
       >
         Semua Artikel
       </button>
@@ -163,31 +163,37 @@ const blogPosts = [
   </section>
 </Layout>
 
+<style>
+  .filter-btn-active {
+    background: #556B2F !important;
+    color: white !important;
+    border-color: #556B2F !important;
+  }
+</style>
+
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const cards = document.querySelectorAll<HTMLElement>('#blog-grid article');
+
+  // Set "Semua Artikel" as default active
+  const defaultBtn = document.querySelector<HTMLButtonElement>('[data-filter="semua"]');
+  defaultBtn?.classList.add('filter-btn-active');
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter ?? 'semua';
 
-      // Update active button style
-      buttons.forEach((b) => {
-        b.classList.remove('bg-godev-primary', 'text-white', 'active');
-        b.classList.add('glass-badge');
-      });
-      btn.classList.add('bg-godev-primary', 'text-white', 'active');
-      btn.classList.remove('glass-badge');
+      // Update active button — only toggle color class, shape (glass-badge) stays intact
+      buttons.forEach((b) => b.classList.remove('filter-btn-active'));
+      btn.classList.add('filter-btn-active');
 
       // Show / hide cards
       cards.forEach((card) => {
         const category = card.dataset.category ?? '';
         if (filter === 'semua' || category === filter) {
           card.style.display = '';
-          card.style.opacity = '1';
         } else {
           card.style.display = 'none';
-          card.style.opacity = '0';
         }
       });
     });

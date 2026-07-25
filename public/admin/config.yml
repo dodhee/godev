@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: dodhee/godev
+  branch: main
+  base_url: https://godev.biz.id
+  auth_endpoint: api/auth
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Publish Date, name: pubDate, widget: datetime }
+      - { label: Author, name: author, widget: string, default: 'Tim GoDev' }
+      - { label: Category, name: category, widget: string }
+      - label: Tags
+        name: tags
+        widget: list
+        allow_add: true
+        field: { label: Tag, name: tag, widget: string }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Body, name: body, widget: markdown }

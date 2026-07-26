@@ -5,7 +5,7 @@ pubDate: 2026-07-01T09:00:00Z
 author: "Dody Pratomo"
 category: "Otomasi Bisnis"
 tags: ["otomasi", "umkm", "sistem bisnis", "google workspace", "produktivitas"]
-image: "/images/blog/tanda-butuh-otomasi.jpg"
+image: "/images/blog/5_tanda_umkm_butuh_otomasi.jpg"
 ---
 
 # 5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat)

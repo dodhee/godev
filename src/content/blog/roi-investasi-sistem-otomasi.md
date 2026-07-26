@@ -5,7 +5,7 @@ pubDate: 2026-07-05T11:00:00Z
 author: "Dody Pratomo"
 category: "ROI & Investasi"
 tags: ["roi", "investasi", "biaya", "break even", "savings"]
-image: "/images/blog/roi-sistem-otomasi.jpg"
+image: "/images/blog/roi_otomasi_sistem.jpg"
 ---
 
 # ROI Investasi Sistem Otomasi: Berapa Lama Balik Modal?

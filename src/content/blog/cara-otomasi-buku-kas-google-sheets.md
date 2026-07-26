@@ -5,7 +5,7 @@ pubDate: 2026-07-02T10:00:00Z
 author: "Dody Pratomo"
 category: "Tutorial"
 tags: ["google sheets", "buku kas", "akuntansi", "tutorial", "gratis"]
-image: "/images/blog/buku-kas-google-sheets.jpg"
+image: "/images/blog/cara_otomasi_buku_kas.jpg"
 ---
 
 # Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)

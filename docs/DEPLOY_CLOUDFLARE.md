@@ -69,7 +69,7 @@ godev
 
 **Production Branch:**
 ```
-master
+main
 ```
 
 **Framework Preset:**
@@ -252,7 +252,7 @@ Agar `godev.pages.dev` otomatis redirect ke `godev.biz.id`:
 ### **Cara Kerja:**
 
 Setiap kali Anda `git push` ke GitHub, Cloudflare otomatis:
-1. Detect perubahan di branch `master`
+1. Detect perubahan di branch `main`
 2. Clone repo terbaru
 3. Build ulang website
 4. Deploy ke CDN global
@@ -265,7 +265,7 @@ Setiap kali Anda `git push` ke GitHub, Cloudflare otomatis:
    ```bash
    git add .
    git commit -m "test: update homepage"
-   git push origin master
+   git push origin main
    ```
 3. **Monitor di Cloudflare:**
    - Pages dashboard → "Deployments" tab
@@ -459,7 +459,7 @@ Di Cloudflare Pages dashboard → `godev` → Settings:
 - [x] Semua pages render correct
 - [x] WhatsApp links tested
 - [x] Responsive di mobile
-- [x] Git push ke master
+- [x] Git push ke main
 
 ### **Deploy:**
 - [ ] Cloudflare account created

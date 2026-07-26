@@ -14,7 +14,7 @@
 | **Deskripsi** | Landing page jasa Done-For-You (DFY) otomatisasi Google Workspace untuk UMKM Indonesia |
 | **URL Produksi** | https://godev.biz.id |
 | **URL Repo** | https://github.com/dodhee/godev.git |
-| **Branch aktif** | `master` |
+| **Branch aktif** | `main` |
 | **Platform deploy** | Cloudflare Pages (free tier) |
 | **Stack** | Astro 6.4.8, AstroWind template, Tailwind CSS 4.3.2, Formspree, Cloudflare Pages |
 | **Sister site** | https://klikdev.my.id (traffic source via UTM) |
@@ -155,7 +155,7 @@ feat(godev): [deskripsi singkat]
 # Cek file sensitif SEBELUM commit
 git status   # pastikan .env tidak ter-track
 git diff --staged
-git push origin master
+git push origin main
 ```
 
 > ⚠️ **Selalu cek `.env` tidak ter-commit.** File ini ada di `.gitignore` tapi verifikasi manual wajib.

@@ -32,7 +32,7 @@
 - [x] Code ready di GitHub
 - [x] Build test lokal sukses
 - [x] Zero errors/warnings
-- [x] Git push ke master
+- [x] Git push ke main
 
 ---
 
@@ -53,7 +53,7 @@
 
 #### **Step 3: Configure Build (1 menit)**
 - [ ] Project name: `godev`
-- [ ] Branch: `master`
+- [ ] Branch: `main`
 - [ ] Framework preset: **Astro**
 - [ ] Build command: `npm run build` (auto-filled)
 - [ ] Output directory: `dist` (auto-filled)
@@ -128,7 +128,7 @@
   ```bash
   git add .
   git commit -m "test: verify auto-deploy"
-  git push origin master
+  git push origin main
   ```
 
 #### **Monitor Deploy:**

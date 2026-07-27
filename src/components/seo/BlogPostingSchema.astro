@@ -1,0 +1,60 @@
+---
+/**
+ * BlogPostingSchema — JSON-LD Article/BlogPosting untuk SEO + AIO
+ */
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string | Date;
+  dateModified?: string | Date;
+  authorName?: string;
+  image?: string;
+  publisherName?: string;
+  publisherUrl?: string;
+}
+
+const {
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  authorName = 'Tim GoDev',
+  image,
+  publisherName = 'GoDev',
+  publisherUrl = 'https://godev.biz.id',
+} = Astro.props;
+
+const toIso = (d: string | Date) => (d instanceof Date ? d.toISOString() : new Date(d).toISOString());
+
+const schema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  url,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
+  datePublished: toIso(datePublished),
+  dateModified: toIso(dateModified ?? datePublished),
+  author: {
+    '@type': 'Person',
+    name: authorName,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: publisherName,
+    url: publisherUrl,
+  },
+  inLanguage: 'id-ID',
+};
+
+if (image) {
+  schema.image = image.startsWith('http') ? image : new URL(image, publisherUrl).href;
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,119 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '~/layouts/PageLayout.astro';
+import BlogPostingSchema from '~/components/seo/BlogPostingSchema.astro';
+import { resolveBlogImage, blogImagePublicUrl } from '~/utils/blogImages';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts
+    .filter((p) => !p.data.draft)
+    .map((post) => ({
+      params: { slug: post.id },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content } = await render(post);
+const slug = post.id;
+const pageUrl = `https://godev.biz.id/blog/${slug}`;
+const hero = resolveBlogImage(data.image);
+const ogImage = blogImagePublicUrl(data.image);
+
+const metadata = {
+  title: data.title,
+  description: data.description,
+  openGraph: {
+    type: 'article',
+    images: ogImage ? [{ url: ogImage }] : undefined,
+  },
+};
+
+const waText = encodeURIComponent(
+  `Halo GoDev, saya baca artikel "${data.title}". Saya mau konsultasi.`
+);
+const pubDateLabel = data.pubDate.toLocaleDateString('id-ID', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout metadata={metadata}>
+  <article class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-4xl">
+    <header class="mb-12">
+      <div class="flex flex-wrap items-center gap-3 mb-4 text-sm text-muted">
+        <a href="/blog" class="hover:text-godev-primary">Blog</a>
+        <span>•</span>
+        <span class="glass-badge">{data.category}</span>
+        <span>•</span>
+        <time datetime={data.pubDate.toISOString()}>{pubDateLabel}</time>
+        {
+          data.author && (
+            <>
+              <span>•</span>
+              <span>{data.author}</span>
+            </>
+          )
+        }
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 font-heading">{data.title}</h1>
+      <p class="text-xl text-muted">{data.description}</p>
+    </header>
+
+    {
+      hero ? (
+        <div class="mb-12 rounded-xl overflow-hidden">
+          <Image
+            src={hero}
+            alt={data.title}
+            width={896}
+            height={400}
+            class="w-full object-cover"
+          />
+        </div>
+      ) : data.image ? (
+        <div class="mb-12 rounded-xl overflow-hidden">
+          <img src={data.image} alt={data.title} class="w-full object-cover" width="896" height="400" />
+        </div>
+      ) : null
+    }
+
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <Content />
+    </div>
+
+    <div class="not-prose mt-12 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white">
+      <h3 class="text-2xl font-bold mb-3">Mau Diskusi Sistem Otomasi untuk Usaha Anda?</h3>
+      <p class="mb-6">
+        Konsultasi pertama gratis. Kami bantu analisis mana yang paling urgent untuk usaha Anda.
+      </p>
+      <a
+        href={`https://wa.me/6281234796567?text=${waText}`}
+        class="inline-block px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Konsultasi Gratis via WhatsApp
+      </a>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <a href="/blog" class="inline-flex items-center text-godev-primary font-semibold hover:underline">
+        ← Kembali ke Blog
+      </a>
+    </div>
+  </article>
+
+  <BlogPostingSchema
+    title={data.title}
+    description={data.description}
+    url={pageUrl}
+    datePublished={data.pubDate}
+    authorName={data.author}
+    image={ogImage}
+  />
+</Layout>

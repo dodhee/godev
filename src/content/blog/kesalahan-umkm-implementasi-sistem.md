@@ -5,11 +5,8 @@ pubDate: 2026-07-04T09:30:00Z
 author: "Dody Pratomo"
 category: "Best Practices"
 tags: ["implementasi sistem", "change management", "kesalahan umum", "tips bisnis"]
-image: "/images/blog/kesalahan-implementasi.jpg"
+image: "/images/kesalahan_umkm_implementasi_sistem.jpg"
 ---
-
-# 7 Kesalahan Fatal UMKM Saat Implementasi Sistem Otomasi (dan Cara Menghindarinya)
-
 Setelah membantu 50+ UMKM implementasi sistem otomasi, saya lihat **pola kesalahan yang sama berulang**.
 
 Kesalahan ini membuat investasi sistem jadi sia-sia. Tim kembali ke cara manual. Uang dan waktu terbuang.

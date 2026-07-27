@@ -2,7 +2,7 @@
 
 > **Lokasi kanonik:** `/agent.md` di **root repo** — JANGAN pindah ke `docs/agent.md`.
 > **Sumber kebenaran spek:** `docs/mega_prompt_godev.txt`
-> **Status terakhir:** 27 Juli 2026
+> **Status terakhir:** 27 Juli 2026 (Fase B blog Content Collections)
 > **Dibaca wajib di awal setiap sesi baru.**
 
 ---
@@ -46,7 +46,7 @@
   ```
 - **Jangan tulis ulang file utuh** jika hanya mengubah sebagian.
 - **NO HALLUCINATION:** Jangan membuat file, fungsi, atau API yang tidak ada.
-- **NO CONTENT COLLECTIONS:** Semua konten hardcode di komponen Astro.
+- **Blog = Content Collections** (`src/content/blog` + `src/content.config.ts` collection `blog`). Decap tulis MD → build render `/blog/[slug]`. Landing non-blog tetap hardcode di komponen Astro.
 - **Gunakan `npm`**, bukan `pnpm`.
 - **Prettier** sebagai formatter.
 
@@ -169,12 +169,16 @@ git push origin main
 - **Partytown GA:** `partytown: false` di-hardcode di `src/components/common/Analytics.astro` baris 5 (jangan diubah balik ke `true`).
 
 ### ⚠️ Pekerjaan Pending (Opsional)
-- [ ] Hapus halaman test (`/test-glass`, `/test-glass-effects`) saat production cleanup
 - [ ] Tambah cross-link godev→klikdev di footer
 - [ ] Event tracking WhatsApp clicks (`gtag('event', 'whatsapp_click', ...)`)
 - [ ] GA4 Enhanced Measurement (scroll, outbound clicks)
-- [ ] Artikel blog: terlah diselesaikan 5 dari 7 yang direncanakan (mega_prompt menyebut 7)
+- [ ] Artikel blog: 5 live via collection; mega_prompt sebut 7 — sisanya lewat Decap `/admin/`
 - [ ] A/B testing CTA copy dan pricing
+
+### ✅ Selesai (27 Jul 2026)
+- [x] Hapus `/test-glass`, `/test-glass-effects` + dead AstroWind residual
+- [x] **Fase B blog:** `src/content.config.ts` collection `blog` → `src/pages/blog/[slug].astro` + listing + RSS 5/5 + `BlogPosting` JSON-LD; hardcode `src/pages/blog/*.astro` dihapus; dual schema legacy hilang
+- [x] `agent.md` kanonik di **root** (bukan `docs/`)
 
 ### 📊 Target Metrik
 | Periode | Metrik | Target |
@@ -195,9 +199,10 @@ git push origin main
 - **Tailwind:** 4.3.2 dengan Vite plugin — sintaks bisa berbeda dari Tailwind 3.x.
 - **AstroWind components** yang boleh dipakai: `Hero`, `Features`, `Steps`, `CardGrid`, `CallToAction`.
 - **`bg-linear-to-r`** bukan `bg-gradient-to-r` (Tailwind 4.x syntax).
-- **Formspree endpoint** disimpan di `.env` sebagai `FORMSPREE_ENDPOINT`.
-- **`rss.xml.ts`** ada tapi blog TIDAK menggunakan Content Collections — RSS mungkin perlu penyesuaian jika artikel bertambah.
+- **Formspree endpoint** disimpan di `.env` sebagai `FORMSPREE_ENDPOINT` (build: `PUBLIC_FORMSPREE_*` di CF Build scope).
+- **Blog pipeline:** Decap (`public/admin`) → `src/content/blog/*.md` → collection `blog` → `/blog/[slug]` + `/blog` + `/rss.xml`. Image: `src/images/blog/*`, frontmatter `image: /images/<basename>` (Decap `public_folder: /images`). Helper: `src/utils/blogImages.ts`. Schema: `BlogPostingSchema.astro`.
+- **Jangan** recreate `src/content/config.ts` dual legacy atau collection `post` / `src/data/post`.
 
 ---
 
-*File ini dibuat otomatis oleh agent pada 13 Juli 2026. Update file ini setiap akhir sesi signifikan.*
+*Update 27 Juli 2026: Fase B blog collections + cleanup AstroWind. Root `agent.md` lock.*

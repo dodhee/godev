@@ -5,11 +5,8 @@ pubDate: 2026-07-03T08:00:00Z
 author: "Dody Pratomo"
 category: "Perbandingan"
 tags: ["google workspace", "microsoft excel", "perbandingan", "cloud computing", "umkm"]
-image: "/images/blog/google-vs-excel.jpg"
+image: "/images/google_space_vs_excel_bagi_umkm.jpg"
 ---
-
-# Google Workspace vs Excel: Mana yang Lebih Cocok untuk UMKM?
-
 Sebagai pemilik UMKM, Anda pasti pernah dengar:
 - "Pakai Excel aja, gratis dan sudah biasa"
 - "Google Sheets lebih praktis, bisa akses dari mana aja"

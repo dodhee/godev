@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -15,11 +16,12 @@ import ServiceSchema from '~/components/seo/ServiceSchema.astro';
 
 // Data
 import { testimonials } from '~/data/testimonials';
+import { resolveBlogImage } from '~/utils/blogImages';
 
-// Blog preview images
-import imgBlog1 from '~/images/blog/5_tanda_umkm_butuh_otomasi.jpg';
-import imgBlog2 from '~/images/blog/cara_otomasi_buku_kas.jpg';
-import imgBlog3 from '~/images/blog/roi_otomasi_sistem.jpg';
+const latestPosts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 const metadata = {
   title: 'GoDev - Otomasi Usaha UMKM | Pemilik Bisa Libur Tenang',
@@ -240,65 +242,30 @@ const metadata = {
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 mb-8">
-      <a href="/blog/5-tanda-umkm-butuh-otomasi" class="glass-card glass-shimmer overflow-hidden block">
-        <div class="h-48 overflow-hidden">
-          <Image
-            src={imgBlog1}
-            alt="5 Tanda UMKM Butuh Sistem Otomasi"
-            width={480}
-            height={192}
-            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
-            5 Tanda UMKM Anda Butuh Sistem Otomasi
-          </h3>
-          <p class="text-sm text-muted">
-            Cek tanda-tanda ini sebelum kehilangan pelanggan karena sistem manual yang kacau.
-          </p>
-        </div>
-      </a>
-
-      <a href="/blog/cara-otomasi-buku-kas-google-sheets" class="glass-card glass-shimmer overflow-hidden block">
-        <div class="h-48 overflow-hidden">
-          <Image
-            src={imgBlog2}
-            alt="Cara Otomasi Buku Kas dengan Google Sheets"
-            width={480}
-            height={192}
-            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
-            Cara Otomasi Buku Kas dengan Google Sheets
-          </h3>
-          <p class="text-sm text-muted">
-            Tutorial lengkap membuat buku kas otomatis tanpa coding. Bonus template gratis!
-          </p>
-        </div>
-      </a>
-
-      <a href="/blog/roi-investasi-sistem-otomasi" class="glass-card glass-shimmer overflow-hidden block">
-        <div class="h-48 overflow-hidden">
-          <Image
-            src={imgBlog3}
-            alt="ROI Investasi Sistem Otomasi untuk UMKM"
-            width={480}
-            height={192}
-            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">
-            ROI Investasi Sistem Otomasi
-          </h3>
-          <p class="text-sm text-muted">
-            Perhitungan detail: berapa biaya, berapa savings, kapan break even?
-          </p>
-        </div>
-      </a>
+      {
+        latestPosts.map((post) => {
+          const img = resolveBlogImage(post.data.image);
+          return (
+            <a href={`/blog/${post.id}`} class="glass-card glass-shimmer overflow-hidden block">
+              {img && (
+                <div class="h-48 overflow-hidden">
+                  <Image
+                    src={img}
+                    alt={post.data.title}
+                    width={480}
+                    height={192}
+                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              )}
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2 hover:text-godev-primary">{post.data.title}</h3>
+                <p class="text-sm text-muted line-clamp-3">{post.data.description}</p>
+              </div>
+            </a>
+          );
+        })
+      }
     </div>
 
     <div class="text-center">

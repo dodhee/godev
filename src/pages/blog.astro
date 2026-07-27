@@ -1,75 +1,24 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
+import { resolveBlogImage } from '~/utils/blogImages';
 
-import img5Tanda from '~/images/blog/5_tanda_umkm_butuh_otomasi.jpg';
-import imgBukuKas from '~/images/blog/cara_otomasi_buku_kas.jpg';
-import imgGoogleVsExcel from '~/images/blog/google_space_vs_excel_bagi_umkm.jpg';
-import imgKesalahan from '~/images/blog/kesalahan_umkm_implementasi_sistem.jpg';
-import imgRoi from '~/images/blog/roi_otomasi_sistem.jpg';
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = ['semua', ...new Set(posts.map((p) => p.data.category))];
 
 const metadata = {
-  title: 'Blog: Tips Otomasi Bisnis untuk UMKM Indonesia | GoDev',
-  description: 'Artikel, tutorial, dan tips praktis tentang otomasi bisnis untuk UMKM. Belajar cara efisienkan operasional usaha Anda.',
+  title: 'Blog: Tips Otomasi Bisnis untuk UMKM Indonesia',
+  description:
+    'Artikel, tutorial, dan tips praktis tentang otomasi bisnis untuk UMKM. Belajar cara efisienkan operasional usaha Anda.',
 };
-
-const blogPosts = [
-  {
-    title: '5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat)',
-    slug: '5-tanda-umkm-butuh-otomasi',
-    description: 'Usaha berkembang pesat tapi admin kewalahan? Cek 5 tanda ini sebelum kehilangan pelanggan dan omzet karena sistem manual yang kacau.',
-    date: '2026-07-01',
-    category: 'Otomasi Bisnis',
-    readTime: '8 menit',
-    image: img5Tanda,
-    imageAlt: 'Ilustrasi UMKM yang membutuhkan sistem otomasi'
-  },
-  {
-    title: 'Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)',
-    slug: 'cara-otomasi-buku-kas-google-sheets',
-    description: 'Tutorial lengkap membuat buku kas otomatis yang mencatat transaksi, kirim laporan harian via WhatsApp, dan bisa diakses dari mana saja. Gratis!',
-    date: '2026-07-02',
-    category: 'Tutorial',
-    readTime: '12 menit',
-    image: imgBukuKas,
-    imageAlt: 'Tutorial otomasi buku kas dengan Google Sheets'
-  },
-  {
-    title: 'Google Workspace vs Excel: Mana yang Lebih Cocok untuk UMKM?',
-    slug: 'google-workspace-vs-excel-umkm',
-    description: 'Perbandingan lengkap Google Workspace dan Excel untuk kebutuhan UMKM. Mana yang lebih hemat, praktis, dan scalable untuk bisnis Anda?',
-    date: '2026-07-03',
-    category: 'Perbandingan',
-    readTime: '10 menit',
-    image: imgGoogleVsExcel,
-    imageAlt: 'Perbandingan Google Workspace vs Excel untuk UMKM'
-  },
-  {
-    title: '7 Kesalahan Fatal UMKM Saat Implementasi Sistem Otomasi',
-    slug: 'kesalahan-umkm-implementasi-sistem',
-    description: 'Banyak UMKM gagal implementasi sistem otomasi karena kesalahan klasik ini. Pelajari dari pengalaman 50+ UMKM agar Anda tidak mengulang kesalahan yang sama.',
-    date: '2026-07-04',
-    category: 'Best Practices',
-    readTime: '15 menit',
-    image: imgKesalahan,
-    imageAlt: '7 kesalahan fatal UMKM saat implementasi sistem otomasi'
-  },
-  {
-    title: 'ROI Investasi Sistem Otomasi: Berapa Lama Balik Modal?',
-    slug: 'roi-investasi-sistem-otomasi',
-    description: 'Perhitungan detail ROI sistem otomasi untuk UMKM. Berapa biaya, berapa savings, dan kapan break even? Data real dari 50+ bisnis.',
-    date: '2026-07-05',
-    category: 'ROI & Investasi',
-    readTime: '14 menit',
-    image: imgRoi,
-    imageAlt: 'Perhitungan ROI investasi sistem otomasi UMKM'
-  },
-];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Section -->
   <section class="px-4 py-16 sm:px-6 lg:py-20 mx-auto max-w-7xl">
     <div class="text-center mb-12">
       <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
@@ -81,120 +30,82 @@ const blogPosts = [
       </p>
     </div>
 
-    <!-- Categories Filter -->
     <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-buttons">
-      <button
-        data-filter="semua"
-        class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700"
-      >
-        Semua Artikel
-      </button>
-      <button data-filter="Tutorial" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
-        Tutorial
-      </button>
-      <button data-filter="Otomasi Bisnis" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
-        Tips Bisnis
-      </button>
-      <button data-filter="Perbandingan" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
-        Perbandingan
-      </button>
-      <button data-filter="Best Practices" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
-        Best Practices
-      </button>
-      <button data-filter="ROI &amp; Investasi" class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700">
-        ROI &amp; Investasi
-      </button>
+      {
+        categories.map((cat) => (
+          <button
+            data-filter={cat}
+            class="filter-btn glass-badge hover:bg-gray-300 dark:hover:bg-slate-700"
+          >
+            {cat === 'semua' ? 'Semua Artikel' : cat}
+          </button>
+        ))
+      }
     </div>
 
-    <!-- Blog Posts Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
-      {blogPosts.map((post) => (
-        <article class="glass-card-md glass-shimmer overflow-hidden" data-category={post.category}>
-          <div class="h-48 overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.imageAlt}
-              width={600}
-              height={192}
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-3 text-sm text-muted">
-              <span class="glass-badge">
-                {post.category}
-              </span>
-              <span>{post.date}</span>
-              <span>• {post.readTime}</span>
-            </div>
-            <h2 class="text-xl font-bold mb-3 hover:text-godev-primary">
-              <a href={`/blog/${post.slug}`}>{post.title}</a>
-            </h2>
-            <p class="text-muted mb-4 line-clamp-3">
-              {post.description}
-            </p>
-            <a
-              href={`/blog/${post.slug}`}
-              class="inline-flex items-center text-godev-primary font-semibold hover:underline"
-            >
-              Baca Selengkapnya
-              <Icon name="tabler:arrow-right" class="w-4 h-4 ml-2" />
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <!-- Newsletter Subscription (Optional) -->
-    <div class="mt-16 p-8 bg-linear-to-r from-godev-primary to-godev-accent rounded-lg text-white text-center">
-      <h2 class="text-2xl font-bold mb-3">Mau Update Artikel Terbaru?</h2>
-      <p class="mb-6 max-w-2xl mx-auto">
-        Dapatkan tips otomasi bisnis langsung di WhatsApp Anda. Tidak spam, hanya konten berkualitas.
-      </p>
-      <a
-        href="https://wa.me/6281234796567?text=Halo%20GoDev%2C%20saya%20mau%20subscribe%20update%20artikel%20blog"
-        class="inline-block px-8 py-3 bg-white text-godev-primary font-bold rounded-lg hover:bg-gray-100 transition"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Subscribe via WhatsApp
-      </a>
+      {
+        posts.map((post) => {
+          const image = resolveBlogImage(post.data.image);
+          return (
+            <article class="glass-card-md glass-shimmer overflow-hidden" data-category={post.data.category}>
+              {image && (
+                <a href={`/blog/${post.id}`} class="block h-48 overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={post.data.title}
+                    width={600}
+                    height={192}
+                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                </a>
+              )}
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3 text-sm text-muted">
+                  <span class="glass-badge">{post.data.category}</span>
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('id-ID')}
+                  </time>
+                </div>
+                <h2 class="text-xl font-bold mb-3 hover:text-godev-primary">
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                </h2>
+                <p class="text-muted mb-4 line-clamp-3">{post.data.description}</p>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="inline-flex items-center text-godev-primary font-semibold hover:underline"
+                >
+                  Baca Selengkapnya
+                  <Icon name="tabler:arrow-right" class="w-4 h-4 ml-2" />
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
     </div>
   </section>
 </Layout>
 
 <style>
   .filter-btn-active {
-    background: #556B2F !important;
+    background: #556b2f !important;
     color: white !important;
-    border-color: #556B2F !important;
   }
 </style>
 
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const cards = document.querySelectorAll<HTMLElement>('#blog-grid article');
-
-  // Set "Semua Artikel" as default active
-  const defaultBtn = document.querySelector<HTMLButtonElement>('[data-filter="semua"]');
-  defaultBtn?.classList.add('filter-btn-active');
-
+  document.querySelector<HTMLButtonElement>('[data-filter="semua"]')?.classList.add('filter-btn-active');
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter ?? 'semua';
-
-      // Update active button — only toggle color class, shape (glass-badge) stays intact
       buttons.forEach((b) => b.classList.remove('filter-btn-active'));
       btn.classList.add('filter-btn-active');
-
-      // Show / hide cards
       cards.forEach((card) => {
         const category = card.dataset.category ?? '';
-        if (filter === 'semua' || category === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = filter === 'semua' || category === filter ? '' : 'none';
       });
     });
   });

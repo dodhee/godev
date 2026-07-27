@@ -5,11 +5,8 @@ pubDate: 2026-07-01T09:00:00Z
 author: "Dody Pratomo"
 category: "Otomasi Bisnis"
 tags: ["otomasi", "umkm", "sistem bisnis", "google workspace", "produktivitas"]
-image: "/images/blog/5_tanda_umkm_butuh_otomasi.jpg"
+image: "/images/5_tanda_umkm_butuh_otomasi.jpg"
 ---
-
-# 5 Tanda UMKM Anda Butuh Sistem Otomasi (Sebelum Terlambat)
-
 Usaha Anda berkembang pesat? Selamat! Tapi tunggu dulu... apakah tim Anda mulai kewalahan? Apakah pelanggan mulai komplain lambat respon? Jangan sampai pertumbuhan bisnis malah jadi bencana karena sistem yang tidak scalable.
 
 Berikut 5 tanda UMKM Anda **sudah waktunya** beralih ke sistem otomasi.

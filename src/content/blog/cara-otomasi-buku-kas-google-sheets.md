@@ -5,11 +5,8 @@ pubDate: 2026-07-02T10:00:00Z
 author: "Dody Pratomo"
 category: "Tutorial"
 tags: ["google sheets", "buku kas", "akuntansi", "tutorial", "gratis"]
-image: "/images/blog/cara_otomasi_buku_kas.jpg"
+image: "/images/cara_otomasi_buku_kas.jpg"
 ---
-
-# Cara Otomasi Buku Kas Digital dengan Google Sheets (Tanpa Coding)
-
 Buku kas adalah jantung bisnis. Tapi mencatat manual setiap transaksi itu melelahkan dan rawan salah. Apalagi kalau transaksi puluhan per hari.
 
 Kabar baiknya: **Anda bisa otomasi buku kas dengan Google Sheets**. Gratis, tidak perlu coding, dan bisa diakses dari HP.

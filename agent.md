@@ -1,7 +1,8 @@
 # agent.md — Panduan Agent untuk Proyek GoDev
 
-> **Sumber kebenaran:** `docs/mega_prompt_godev.txt`
-> **Status terakhir:** 13 Juli 2026
+> **Lokasi kanonik:** `/agent.md` di **root repo** — JANGAN pindah ke `docs/agent.md`.
+> **Sumber kebenaran spek:** `docs/mega_prompt_godev.txt`
+> **Status terakhir:** 27 Juli 2026
 > **Dibaca wajib di awal setiap sesi baru.**
 
 ---

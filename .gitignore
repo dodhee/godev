@@ -30,3 +30,6 @@ pnpm-lock.yaml
 
 # Internal documentation
 docs/mega_prompt_godev.txt
+
+# Firecrawl CLI cache
+.firecrawl/

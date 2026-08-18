@@ -2,7 +2,7 @@
 
 > **Lokasi kanonik:** `/agent.md` di **root repo** — JANGAN pindah ke `docs/agent.md`.
 > **Sumber kebenaran spek:** `docs/mega_prompt_godev.txt`
-> **Status terakhir:** 27 Juli 2026 — Fase B live di `main` @ `13ccc10`, production OK
+> **Status terakhir:** 30 Juli 2026 — Fase Integrasi Web/Data (Firecrawl, Composio, Supabase) verified live
 > **Dibaca wajib di awal setiap sesi baru.**
 
 ---
@@ -17,8 +17,20 @@
 | **URL Repo** | https://github.com/dodhee/godev.git |
 | **Branch aktif** | `main` |
 | **Platform deploy** | Cloudflare Pages (free tier) |
-| **Stack** | Astro 6.4.8, AstroWind template, Tailwind CSS 4.3.2, Formspree, Cloudflare Pages |
+| **Stack** | Astro 6.4.8, AstroWind, Tailwind CSS 4.3.2, Firecrawl, Composio, Supabase, Google Workspace |
 | **Sister site** | https://klikdev.my.id (traffic source via UTM) |
+
+---
+
+## Status Fase
+| Fase | Deskripsi | Status | Catatan |
+|------|-----------|--------|---------|
+| 11   | Integrasi Web/Data (Firecrawl, Composio, Supabase) | ✅ | Verified live |
+
+## Tools & Integrations
+- **Firecrawl**: CLI v1.19.27, API `fc-1d394af58328499eaf7c0d28b0691b03`
+- **Composio**: MCP Server, OAuth GitHub+Google+Supabase (active)
+- **Langfuse**: Observability Enabled (`observability/langfuse`)
 
 ---
 

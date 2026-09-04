@@ -2,15 +2,11 @@
 title: "Panduan otomasi umkm indonesia"
 description: "Pelajari panduan lengkap mengenai otomasi umkm indonesia untuk UMKM."
 pubDate: "2026-08-12"
-heroImage: "/home/runner/work/godev_auto_content/godev_auto_content/godev/src/images/blog/thumbnail-1786500690383.jpg"
 category: "Tips Otomasi"
 tags: []
 author: "GoDev Team"
-slug: "otomasi-umkm-indonesia"
-seo:
-  metaTitle: "Panduan otomasi umkm indonesia"
-  metaDescription: "Pelajari panduan lengkap mengenai otomasi umkm indonesia untuk UMKM."
-ogImage: "/home/runner/work/godev_auto_content/godev_auto_content/godev/src/images/blog/thumbnail-1786500690383.jpg"
+
+
 ---
 
 **Otomasi UMKM Indonesia**  

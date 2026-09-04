@@ -1,3 +1,13 @@
+---
+title: "Otomasi Bisnis di Indonesia: Hemat Biaya untuk UMKM"
+description: "Otomasi bisnis pakai software untuk tugas repetitif."
+pubDate: 2026-09-05
+author: "Tim GoDev"
+category: "Tips Otomasi"
+tags: ["otomasi", "bisnis", "UMKM", "efisiensi"]
+draft: false
+---
+
 **Otomasi Bisnis di Indonesia: Hemat Biaya untuk UMKM**
 
 **Definisi**

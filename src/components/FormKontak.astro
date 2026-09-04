@@ -14,19 +14,13 @@
  * 5. Restart dev server
  */
 
-const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT;
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/PLACEHOLDER';
 
-// Validasi environment variable
-if (!formspreeEndpoint) {
-  throw new Error(
-    '❌ PUBLIC_FORMSPREE_ENDPOINT tidak ditemukan di .env\n\n' +
-    'Setup Instructions:\n' +
-    '1. Copy file .env.example menjadi .env\n' +
-    '2. Daftar di https://formspree.io (gratis)\n' +
-    '3. Buat form baru dan copy endpoint URL\n' +
-    '4. Tambahkan ke .env:\n' +
-    '   PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID\n' +
-    '5. Restart dev server: npm run dev'
+// ponytail: hard throw diganti warning biar build Cloudflare Pages gak gagal.
+// Pasang PUBLIC_FORMSPREE_ENDPOINT di dashboard Cloudflare Pages > Settings > Environment Variables.
+if (!import.meta.env.PUBLIC_FORMSPREE_ENDPOINT && import.meta.env.DEV) {
+  console.warn(
+    '⚠️ PUBLIC_FORMSPREE_ENDPOINT tidak ditemukan. Set di .env atau dashboard Cloudflare Pages.'
   );
 }
 

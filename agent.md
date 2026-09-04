@@ -2,7 +2,7 @@
 
 > **Lokasi kanonik:** `/agent.md` di **root repo** — JANGAN pindah ke `docs/agent.md`.
 > **Sumber kebenaran spek:** `docs/mega_prompt_godev.txt`
-> **Status terakhir:** 30 Juli 2026 — Fase Integrasi Web/Data (Firecrawl, Composio, Supabase) verified live
+> **Status terakhir:** 5 Sep 2026 — Fix deploy type Worker→Pages, 2 build error resolved
 > **Dibaca wajib di awal setiap sesi baru.**
 
 ---
@@ -26,6 +26,7 @@
 | Fase | Deskripsi | Status | Catatan |
 |------|-----------|--------|---------|
 | 11   | Integrasi Web/Data (Firecrawl, Composio, Supabase) | ✅ | Verified live |
+| 12   | Fix deploy Worker→Pages + build errors | ✅ | 5 Sep 2026 — deploy type, frontmatter, FORMSPREE env |
 
 ## Tools & Integrations
 - **Firecrawl**: CLI v1.19.27, API `fc-1d394af58328499eaf7c0d28b0691b03`
@@ -121,6 +122,10 @@
 - `roi-investasi-sistem-otomasi`
 - `google-workspace-vs-excel-umkm`
 - `kesalahan-umkm-implementasi-sistem`
+- `otomasi-bisnis-di-indonesia-bagaimana-umkm-bisa-menghemat-biaya-dan`
+- `otomasi-umkm-indonesia`
+- `otomasi-pemasaran`
+- `test-article`
 
 > ❌ Jangan recreate `src/pages/blog/<slug>.astro` hardcode, `/test-glass*`, dual `src/content/config.ts`, atau collection `post` / `src/data/post`.
 
@@ -149,10 +154,10 @@
 
 | Sistem | Status |
 |---|---|
-| Git tip | `13ccc10` `feat(godev): Fase B blog collections + cleanup residual AstroWind` = `origin/main` |
-| Build local | ✅ 17 page(s), CSS `/_astro/Layout.*.css` OK |
-| Production | ✅ https://godev.biz.id — visual + asset verified 27 Jul 2026 (CSS `text/css` 200) |
-| Blog live | ✅ Collection → 5 slug + listing + RSS 5/5 + `BlogPosting` |
+| Git tip | `1bc5400` `fix(env): ganti throw jadi warning biar build gak gagal kalo FORMSPREE missing` = `origin/main` |
+| Build local | ✅ 21 page(s), 0 errors |
+| Production | ✅ https://godev.biz.id — Pages project baru (bukan Worker), 5 Sep 2026 |
+| Blog live | ✅ Collection → 9 slug + listing + RSS + `BlogPosting` |
 | Decap CMS | ✅ `/admin/` scaffold (GitHub backend + `functions/` OAuth). Publish lewat MD di `src/content/blog` |
 | Google Analytics (G-G0NEG69QSL) | ✅ Live — Partytown **off** (`Analytics.astro` `partytown: false`) |
 | Google Search Console | ✅ Terverifikasi, sitemap-index.xml disubmit |
@@ -195,6 +200,9 @@ git push origin main
 
 ### 🐛 Bug yang Sudah Diperbaiki
 - **Partytown GA:** `partytown: false` di-hardcode di `src/components/common/Analytics.astro` baris 5 (jangan diubah balik ke `true`).
+- **Deploy type Worker→Pages:** Project terdaftar sebagai Worker, bukan Pages. Hapus Worker, bikin Pages project baru via `wrangler pages project create`. Static build deploy ke Pages.
+- **Blog frontmatter missing:** Auto-content engine push MD tanpa `---` block. Ditambah frontmatter valid.
+- **FORMSPREE env throw:** `throw new Error` di `FormKontak.astro` — ganti `console.warn` + fallback placeholder biar build gak gagal. Set env di dashboard CF Pages. |
 
 ### ⚠️ Pekerjaan Pending (Opsional)
 - [ ] Tambah cross-link godev→klikdev di footer

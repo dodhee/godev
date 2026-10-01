@@ -5,6 +5,7 @@ pubDate: 2026-09-05
 author: "Tim GoDev"
 category: "Tips Otomasi"
 tags: ["otomasi", "bisnis", "UMKM", "efisiensi"]
+image: "/images/otomasi-bisnis-di-indonesia-hemat-biaya-umkm.jpg"
 draft: false
 ---
 

@@ -5,6 +5,7 @@ pubDate: "2026-08-11"
 heroImage: "/tmp/images/blog/otomasi-pemasaran.jpg"
 category: "Tips Otomasi"
 tags: []
+image: "/images/otomasi-pemasaran.jpg"
 author: "GoDev Team"
 slug: "otomasi-pemasaran"
 seo:

@@ -1,11 +1,11 @@
 ---
-title: "Panduan otomasi umkm indonesia"
-description: "Pelajari panduan lengkap mengenai otomasi umkm indonesia untuk UMKM."
-pubDate: "2026-08-12"
-category: "Tips Otomasi"
+title: Panduan Otomasi UMKM Indonesia
+description: Pelajari panduan lengkap mengenai otomasi umkm indonesia untuk UMKM.
+pubDate: 2026-08-12
+author: GoDev Team
+category: Tips Otomasi
 tags: []
-image: "/images/otomasi-umkm-indonesia.jpg"
-author: "GoDev Team"
+image: /images/otomasi-umkm-indonesia.jpg
 ---
 
 **Otomasi UMKM Indonesia**  

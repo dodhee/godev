@@ -4,9 +4,8 @@ description: "Pelajari panduan lengkap mengenai otomasi umkm indonesia untuk UMK
 pubDate: "2026-08-12"
 category: "Tips Otomasi"
 tags: []
+image: "/images/otomasi-umkm-indonesia.jpg"
 author: "GoDev Team"
-
-
 ---
 
 **Otomasi UMKM Indonesia**  
